@@ -22,8 +22,8 @@
     "dev": "turbo run dev --ui tui"
   },
   "devDependencies": {
-    "@noodlestan/esbuild": "git+ssh://git@github.com/noodlestan/workspace-tooling.git#main",
-    "@noodlestan/eslint-config": "git+ssh://git@github.com/noodlestan/eslint-config.git#main",
+    "@noodlestan/esbuild": "^0.0.11",
+    "@noodlestan/eslint-config": "^0.0.7",
     "@purrception/lang-ts": "git+ssh://git@github.com/noodlestan/purrception.git#main",
     "@types/node": "^25.9.3",
     "@typescript-eslint/eslint-plugin": "8.11.0",
