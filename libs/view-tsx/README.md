@@ -15,8 +15,8 @@ Extract editable view models from TSX snippets into a framework-agnostic represe
 Supports independent editing of:
 
 - **Multitple target components**
-- **Template wrapper** – everything around the target components
-- **Target component props** – including children, classified as `TSXNode`
+- **Template wrapper** — everything around the target components
+- **Target component props** — including children, classified as `TSXNode`
 
 Used together with a TypeScript parser and a runtime compiler, this package allows TSX snippets to be extracted into structured editable models, modified at a fine-grained level, and later recompiled into executable JSX.
 
