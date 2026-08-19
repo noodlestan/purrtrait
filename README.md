@@ -1,8 +1,12 @@
 # @purrtrait
 
-> Code rendering and layout system for TypeScript source.
+> Code rendering and layout system for data extracted from source code.
 
-Purrtrait is a layered code rendering system that builds on `@purrception/lang-ts` to provide SolidJS-based code layout, in-browser TSX parsing, and editable TSX abstractions.
+Purrtrait is a layered code rendering system for codebase data extracted with [purrception](https://github.com/noodlestan/purrception).
+
+## Languages supported:
+
+- **TS(X):** - provide SolidJS-based code layout, in-browser TSX parsing, and editable TSX abstractions.
 
 ## Packages
 
@@ -13,10 +17,6 @@ Purrtrait is a layered code rendering system that builds on `@purrception/lang-t
 - [@purrtrait/solid-code](./libs/solid-code/README.md) — Purrtrait renderers: SolidJS.
 - [@purrtrait/view-tsx](./libs/view-tsx/README.md) — Abstractions for modelling editable TSX code.
 - [@purrtrait/client-tsx](./libs/client-tsx/README.md) — In-browser TypeScript/TSX parsing and AST utilities.
-
-## Development
-
-Make sure you read the [root README](../README.md) first.
 
 ## MIT License
 

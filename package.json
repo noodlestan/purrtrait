@@ -1,7 +1,7 @@
 {
   "name": "purrtrait",
   "version": "0.0.11",
-  "description": "Code rendering and layout system for TypeScript source.",
+  "description": "Code rendering and layout system for data extracted from source code.",
   "author": "Noodlestan Collective",
   "license": "MIT",
   "private": true,
