@@ -1,0 +1,55 @@
+# Module
+
+## Repository: Purrtrait
+
+**Purpose:** Host and manage the Purrtrait packages.
+
+**Description:** Libraries for rendering data extracted from source code.
+
+**Owner:** Project: Purrtrait
+
+**Author:** Noodlestan Collective
+
+**Remote:** `git@github.com:noodlestan/purrtrait.git`
+
+**Consumers:**
+
+- Repository: Purrception
+
+**Private:** `false`
+
+**Workspaces:**
+
+- `libs/**`
+
+**Language:** Typescript
+
+**Engines:**
+
+- Node: `>= 22`
+
+**PackageManager:** `npm@10.2.3`
+
+**PackageFile:** package.json
+
+**Dependencies:**
+
+- Runtime:
+  - TBD
+- Dev:
+  - TBD
+
+**Scripts:**
+
+- Package Script Set: Root Lifecycle
+
+**Scaffolders:**
+
+- Scaffolder Skeleton: Project Root
+- Scaffolder Files: Project Lefthook
+- Scaffolder Files: Project Package Json
+- Scaffolder Files: Project README
+- Scaffolder Files: Project Tsconfig
+- Scaffolder Files: Project Turbo
+
+**License:** License: Noodlestan 2026 MIT
