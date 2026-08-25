@@ -307,6 +307,7 @@ const targetProps = viewTargetProps(view, '0', ([, node]) => {
 //   onClick: '() => console.log("!")'
 //   children: '<><Display>foo</Display></>'
 // }
+```
 
 ## Development
 
@@ -322,9 +323,8 @@ This library is distributed as ESM and intended to be processed by a bundler suc
 - **$** `npm run build` - uses `Vite` to do produce a dry build in `dist/`.
 - **$** `npm run lint` / `npm run lint:fix` - uses [@noodlestan/eslint-config](https://www.npmjs.com/package/@noodlestan/eslint-config).
 
-## MIT License
+## License
 
-Copyright (c) 2026 [Noodlestan](https://noodlestan.org/).
+Copyright (c) 2025 [Noodlestan](https://noodlestan.org/).
 
 Published under a [MIT license](https://noodlestan.mit-license.org/).
-```

@@ -1,26 +1,16 @@
-# @purrtrait
+# Module
 
-> Code rendering and layout system for data extracted from source code.
+## License: Noodlestan 2025 MIT
 
-Purrtrait is a layered code rendering system for codebase data extracted with [purrception](https://github.com/noodlestan/purrception).
+**Short:**
 
-## Languages supported:
+Copyright (c) 2025 [Noodlestan](https://noodlestan.org/).
 
-- **TS(X):** - provide SolidJS-based code layout, in-browser TSX parsing, and editable TSX abstractions.
+Published under a [MIT license](https://noodlestan.mit-license.org/).
 
-## Packages
+**Long:**
 
-### Libraries
-
-- [@purrtrait/lang-ts](./libs/lang-ts/README.md) — Purrtrait language: support for TypeScript @purrception/lang-ts.
-- [@purrtrait/code-renderer](./libs/code-renderer/README.md) — Purrtrait code layout.
-- [@purrtrait/solid-code](./libs/solid-code/README.md) — Purrtrait renderers: SolidJS.
-- [@purrtrait/view-tsx](./libs/view-tsx/README.md) — Abstractions for modelling editable TSX code.
-- [@purrtrait/client-tsx](./libs/client-tsx/README.md) — In-browser TypeScript/TSX parsing and AST utilities.
-
-## License
-
-MIT License
+MIT License https://noodlestan.mit-license.org/
 
 Copyright (c) 2025 Noodlestan https://noodlestan.org/
 
