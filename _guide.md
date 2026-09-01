@@ -66,8 +66,8 @@ npm ci # to install dependencies.
 
 **Instructions:**
 
-Run from the repository root (monorepo):
+Runs automatically on pre-commit hook (from the repository root):
 
 ```bash
-npm run ci # lint, build and test
+npm run ci # lint, test and build
 ```
