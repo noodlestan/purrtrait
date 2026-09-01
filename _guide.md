@@ -4,9 +4,9 @@ Code rendering and layout system for data extracted from source code. A standalo
 
 ## Recommended Reading
 
-Agents SHOULD scan these files for definitions and resource locations when faced with uncertainty or ambiguity that may result from missing resources.
+Agents SHOULD scan these files for relevant clarifications when faced with ambiguity or omissions that may result from missing definitions.
 
-- `_guide.md` — this file: system overview, layout, records, workflows, and operating instructions.
+- `_guide.md` — this file: system overview, layout, setup, verification.
 - `_records/project.art` — the project record.
 - `_records/repository.art` — the repository record.
 
@@ -40,9 +40,13 @@ Records are co-located with the resources they describe in `_records/` directori
 
 ## Workflows
 
-### Planning Work
+Projects in this repository use the following workflows:
 
-This project plans its work with the workflow defined in `$DOMAINS/work/workflows/planning-work/workflow.art`.
+| Workflow / Path                                                        | Purpose                                                                                           |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **Planning Work** `$DOMAINS/work/workflows/planning-work/workflow.art` | Create and manage work item lifecycles, collecting operational instructions according to context. |
+
+### Planning Work
 
 - The backlog lives at `_backlog/` with subdirectories such as `/3-now` and `/4-next/`.
 
