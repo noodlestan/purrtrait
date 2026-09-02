@@ -15,8 +15,8 @@
   "scripts": {
     "clean": "turbo run build:clean",
     "build": "turbo run build",
-    "lint": "turbo run lint",
-    "lint:fix": "turbo run lint:fix",
+    "lint": "prettier . -c && turbo run lint",
+    "lint:fix": "prettier . -c --write && turbo run lint:fix",
     "test": "turbo run test",
     "ci": "turbo run ci",
     "dev": "turbo run dev --ui tui"
