@@ -1,10 +1,12 @@
-# @purrtrait
+# Purrtrait
 
-> Code rendering and layout system for data extracted from source code.
+> Transform, render and visualize metadata about source code and artefacts.
 
-Purrtrait is a layered code rendering system for codebase data extracted with [purrception](https://github.com/noodlestan/purrception).
+Collection of tools for rendering code, visualizing metadata, and creating representations for humans and tools.
 
 ## Languages supported:
+
+Purrtrait contains a code rendering system for codebase metadata extracted with [purrception](https://github.com/noodlestan/purrception).
 
 - **TS(X):** - provide SolidJS-based code layout, in-browser TSX parsing, and editable TSX abstractions.
 

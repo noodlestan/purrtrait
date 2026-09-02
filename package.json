@@ -1,7 +1,7 @@
 {
   "name": "purrtrait",
   "version": "0.0.11",
-  "description": "Code rendering and layout system for data extracted from source code.",
+  "description": "Collection of tools for rendering code, visualizing metadata, and creating representations for humans and tools.",
   "author": "Noodlestan Collective",
   "license": "MIT",
   "private": true,

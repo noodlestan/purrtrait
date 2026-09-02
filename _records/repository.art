@@ -2,9 +2,9 @@
 
 ## Repository: Purrtrait
 
-**Purpose:** Host and manage the Purrtrait packages.
+**Purpose:** Host and manage the Purrtrait packages and tools, and their planning artefacts.
 
-**Description:** Libraries for rendering data extracted from source code.
+**Description:** Monorepo containing the Purrtrait roadmap, libraries for source code transformation, rendering, and syntax highlighting, CLI tools for metadata extraction, and their backlogs.
 
 **Owner:** Project: Purrtrait
 

@@ -1,6 +1,10 @@
-# Purrtrait
+# Guide: Purrtrait
 
-Code rendering and layout system for data extracted from source code. A standalone npm workspaces monorepo providing TypeScript/TSX language support, code layout, SolidJS renderers, editable TSX abstractions, and in-browser parsing utilities.
+> Host and manage the Purrtrait packages and tools, and their planning artefacts.
+
+Monorepo containing the Purrtrait roadmap, libraries for source code transformation, rendering, and syntax highlighting, CLI tools for metadata extraction, and their backlogs.
+
+**Management:** Uses Workflow: Planning Work with one backlog per package, coordinating with Workflow: Roadmapping from one project-wide roadmap.
 
 ## Recommended Reading
 
