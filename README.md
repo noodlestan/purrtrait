@@ -20,6 +20,15 @@ Purrtrait contains a code rendering system for codebase metadata extracted with 
 - [@purrtrait/view-tsx](./libs/view-tsx/README.md) — Abstractions for modelling editable TSX code.
 - [@purrtrait/client-tsx](./libs/client-tsx/README.md) — In-browser TypeScript/TSX parsing and AST utilities.
 
+## Development
+
+### Scripts
+
+- **$** `npm run turbo build` — Build all packages.
+- **$** `npm run turbo test` — Run tests in all packages.
+- **$** `npm run turbo lint` — Lint all packages (Prettier + ESLint).
+- **$** `npm run ci` — Run all CI scripts in all packages.
+
 ## License
 
 MIT License
