@@ -1,7 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "types": ["vite/client"]
-  },
-  "include": ["src/"]
+  "extends": "@noodlestan/tsconfig/libs/tsconfig-vite-solid.json",
+  "include": ["src/", "**/*.config.ts"],
+  "exclude": ["node_modules/"]
 }

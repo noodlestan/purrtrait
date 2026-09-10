@@ -24,18 +24,14 @@
     "dev": "vite build --watch",
     "lint": "prettier . -c && eslint . && tsc --noEmit",
     "lint:fix": "prettier . -c --write && eslint . --fix",
-    "build:clean": "rm -rf dist",
     "build": "vite build",
-    "test": "echo none yet",
-    "ci": "npm run lint && npm run build && npm run test"
+    "build:clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:ci": "vitest run --coverage",
+    "test:watch": "vitest",
+    "ci": "npm run lint && npm run build && npm run test:ci"
   },
   "dependencies": {},
   "peerDependencies": {},
-  "devDependencies": {
-    "vite": "^8.0.16",
-    "vite-plugin-solid": "^2.11.12",
-    "vite-plugin-solid-svg": "^0.8.1",
-    "vite-plugin-top-level-await": "^1.6.0",
-    "vitest": "^4.1.8"
-  }
+  "devDependencies": {}
 }

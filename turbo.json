@@ -12,6 +12,9 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**"]
     },
+    "extract": {
+      "cache": false
+    },
     "ci": {
       "cache": false,
       "dependsOn": ["^ci"]
