@@ -15,6 +15,12 @@ Agents SHOULD scan these files for definitions and resource locations when faced
 src/                — source code
 ```
 
+## Conventions
+
+This package follows strict conventions.
+
+::READ `../../_guide.md` for repository-wide conventions.
+
 ## Operating Instructions
 
 ### Operating Instructions: Setting Up
