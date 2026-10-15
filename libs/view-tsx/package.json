@@ -3,6 +3,10 @@
   "version": "0.0.11",
   "description": "Abstractions for modelling editable TSX code.",
   "keywords": [
+    "tsx",
+    "visualization"
+  ],
+  "keywords": [
     "jsx",
     "babel",
     "runtime",

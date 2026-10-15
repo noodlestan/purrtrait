@@ -2,6 +2,10 @@
   "name": "@purrtrait/code-renderer",
   "version": "0.0.11",
   "description": "Purrtrait code layout.",
+  "keywords": [
+    "rendering",
+    "code-visualization"
+  ],
   "author": "Noodlestan Collective",
   "license": "MIT",
   "private": false,

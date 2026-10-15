@@ -4,6 +4,8 @@
 
 Collection of tools for rendering code, visualizing metadata, and creating representations for humans and tools.
 
+**Keywords:** metadata, visualization, rendering, code-visualization.
+
 ## Languages supported:
 
 Purrtrait contains a code rendering system for codebase metadata extracted with [purrception](https://github.com/noodlestan/purrception).

@@ -2,6 +2,12 @@
   "name": "purrtrait",
   "version": "0.0.11",
   "description": "Collection of tools for rendering code, visualizing metadata, and creating representations for humans and tools.",
+  "keywords": [
+    "metadata",
+    "visualization",
+    "rendering",
+    "code-visualization"
+  ],
   "author": "Noodlestan Collective",
   "license": "MIT",
   "private": true,

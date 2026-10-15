@@ -2,6 +2,10 @@
   "name": "@purrtrait/lang-ts",
   "version": "0.0.11",
   "description": "Purrtrait language: support for TypeScript @purrception/lang-ts.",
+  "keywords": [
+    "typescript",
+    "metadata"
+  ],
   "author": "Noodlestan Collective",
   "license": "MIT",
   "private": false,

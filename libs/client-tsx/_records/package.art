@@ -20,6 +20,11 @@
 
 **Private:** `false`
 
+**Keywords:**
+
+- tsx
+- code-rendering
+
 **Deployment:** NPM Package Deployment: Client TSX
 
 **Files:**
