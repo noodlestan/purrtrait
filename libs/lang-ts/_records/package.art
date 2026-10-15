@@ -1,0 +1,40 @@
+# Module
+
+## Package: Lang TS
+
+**Purpose:** Typescript language support for the code renderer.
+
+**Description:** Adds Typescript support to Purrtrait by adapting the `@purrception/lang-ts` lightweight AST to the `@purrtrait/code-renderer` registry.
+
+**Owner:** Project: Purrtrait
+
+**Namespace:** Namespace: Purrtrait
+
+**Author:** Noodlestan Collective
+
+**Path:** `libs/lang-ts/`
+
+**Canonical Name:** `@purrtrait/lang-ts`
+
+**Published:** `true`
+
+**Private:** `false`
+
+**Deployment:** NPM Package Deployment: Lang TS
+
+**Files:**
+
+- `src`
+- `LICENSE-MIT`
+
+**Language:** TypeScript
+
+**PackageFile:** `package.json`
+
+**Dependencies:**
+
+- Runtime:
+  - `@purrception/lang-ts` @ `0.0.12` — Typescript AST definitions.
+  - `@purrtrait/code-renderer` @ `0.0.11` — Rendering context and language registry.
+
+**License:** License: Noodlestan 2025 MIT

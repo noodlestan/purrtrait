@@ -1,0 +1,43 @@
+# Module
+
+## Package: Solid Code
+
+**Purpose:** SolidJS renderers for code blocks.
+
+**Description:** SolidJS implementations of the Purrtrait code renderers, wiring the Typescript language support into the code rendering context.
+
+**Owner:** Project: Purrtrait
+
+**Namespace:** Namespace: Purrtrait
+
+**Author:** Noodlestan Collective
+
+**Path:** `libs/solid-code/`
+
+**Canonical Name:** `@purrtrait/solid-code`
+
+**Published:** `true`
+
+**Private:** `false`
+
+**Deployment:** NPM Package Deployment: Solid Code
+
+**Files:**
+
+- `src`
+- `LICENSE-MIT`
+
+**Language:** TypeScript
+
+**PackageFile:** `package.json`
+
+**Dependencies:**
+
+- Runtime:
+  - `@purrtrait/code-renderer` @ `0.0.11` — Rendering context and language registry.
+  - `@purrtrait/lang-ts` @ `0.0.11` — Typescript language support.
+
+- Peer:
+  - `solid-js` @ `^1.9.5` — SolidJS runtime.
+
+**License:** License: Noodlestan 2025 MIT

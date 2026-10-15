@@ -1,0 +1,17 @@
+# Module
+
+## NPM Package Deployment: Code Renderer
+
+**Owner:** Package: Code Renderer
+
+**Status:** `DEPLOYED`
+
+**Build:** Deployment Build: NPM Command
+
+**Deploy:** Deployment Command: NPM Package CLI
+
+**Canonical Name:** `@purrtrait/code-renderer`
+
+**Registry:** `https://registry.npmjs.org`
+
+**Access:** `public`

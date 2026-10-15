@@ -1,0 +1,39 @@
+# Module
+
+## Package: Client TSX
+
+**Purpose:** Parse and inspect Typescript and TSX in the browser.
+
+**Description:** Low-level utilities for parsing, inspecting, and serializing Typescript and TSX code in the browser. Language structure only — no execution, rendering, or UI composition.
+
+**Owner:** Project: Purrtrait
+
+**Namespace:** Namespace: Purrtrait
+
+**Author:** Noodlestan Collective
+
+**Path:** `libs/client-tsx/`
+
+**Canonical Name:** `@purrtrait/client-tsx`
+
+**Published:** `true`
+
+**Private:** `false`
+
+**Deployment:** NPM Package Deployment: Client TSX
+
+**Files:**
+
+- `src`
+- `LICENSE-MIT`
+
+**Language:** TypeScript
+
+**PackageFile:** `package.json`
+
+**Dependencies:**
+
+- Peer:
+  - `typescript` @ `5.9.3` — Typescript compiler API.
+
+**License:** License: Noodlestan 2025 MIT

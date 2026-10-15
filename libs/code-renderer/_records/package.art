@@ -1,0 +1,34 @@
+# Module
+
+## Package: Code Renderer
+
+**Purpose:** Code rendering context, layout entry point, and language support registration.
+
+**Description:** Core of the Purrtrait code rendering system; owns the rendering context, the layout entry point, and the registry through which language supports are attached.
+
+**Owner:** Project: Purrtrait
+
+**Namespace:** Namespace: Purrtrait
+
+**Author:** Noodlestan Collective
+
+**Path:** `libs/code-renderer/`
+
+**Canonical Name:** `@purrtrait/code-renderer`
+
+**Published:** `true`
+
+**Private:** `false`
+
+**Deployment:** NPM Package Deployment: Code Renderer
+
+**Files:**
+
+- `src`
+- `LICENSE-MIT`
+
+**Language:** TypeScript
+
+**PackageFile:** `package.json`
+
+**License:** License: Noodlestan 2025 MIT

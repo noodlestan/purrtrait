@@ -1,0 +1,42 @@
+# Module
+
+## Package: View TSX
+
+**Purpose:** Model editable TSX code.
+
+**Description:** High level abstractions for modelling editable TSX code, aimed at interactive component environments such as documentation sandboxes, visual editors, and runtime JSX evaluation.
+
+**Owner:** Project: Purrtrait
+
+**Namespace:** Namespace: Purrtrait
+
+**Author:** Noodlestan Collective
+
+**Path:** `libs/view-tsx/`
+
+**Canonical Name:** `@purrtrait/view-tsx`
+
+**Published:** `true`
+
+**Private:** `false`
+
+**Deployment:** NPM Package Deployment: View TSX
+
+**Files:**
+
+- `src`
+- `LICENSE-MIT`
+
+**Language:** TypeScript
+
+**PackageFile:** `package.json`
+
+**Dependencies:**
+
+- Runtime:
+  - `@purrtrait/client-tsx` @ `0.0.11` — In-browser TSX parsing and AST utilities.
+
+- Peer:
+  - `typescript` @ `5.9.3` — Typescript compiler API.
+
+**License:** License: Noodlestan 2025 MIT

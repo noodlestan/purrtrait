@@ -1,0 +1,17 @@
+# Module
+
+## NPM Package Deployment: Client TSX
+
+**Owner:** Package: Client TSX
+
+**Status:** `DEPLOYED`
+
+**Build:** Deployment Build: NPM Command
+
+**Deploy:** Deployment Command: NPM Package CLI
+
+**Canonical Name:** `@purrtrait/client-tsx`
+
+**Registry:** `https://registry.npmjs.org`
+
+**Access:** `public`
