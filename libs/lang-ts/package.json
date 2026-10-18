@@ -3,8 +3,11 @@
   "version": "0.0.11",
   "description": "Purrtrait language: support for TypeScript @purrception/lang-ts.",
   "keywords": [
+    "library",
     "typescript",
-    "metadata"
+    "metadata",
+    "visualization",
+    "rendering"
   ],
   "author": "Noodlestan Collective",
   "license": "MIT",

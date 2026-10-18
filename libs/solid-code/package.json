@@ -3,8 +3,11 @@
   "version": "0.0.11",
   "description": "Purrtrait renderers: SolidJS.",
   "keywords": [
+    "library",
     "solidjs",
-    "code-visualization"
+    "metadata",
+    "visualization",
+    "rendering"
   ],
   "author": "Noodlestan Collective",
   "license": "MIT",

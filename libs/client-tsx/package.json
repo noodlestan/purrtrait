@@ -3,21 +3,12 @@
   "version": "0.0.11",
   "description": "In-browser TypeScript/TSX parsing and AST utilities.",
   "keywords": [
+    "library",
     "tsx",
-    "code-rendering"
-  ],
-  "keywords": [
-    "jsx",
-    "babel",
-    "runtime",
-    "compiler",
-    "transpiler",
-    "solidjs",
-    "react",
-    "playground",
-    "jsx-runtime",
-    "in-browser-compiler",
-    "code-playground"
+    "code-rendering",
+    "metadata",
+    "visualization",
+    "rendering"
   ],
   "author": "Noodlestan Collective",
   "license": "MIT",

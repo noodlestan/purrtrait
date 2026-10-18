@@ -4,7 +4,7 @@
 
 Collection of tools for rendering code, visualizing metadata, and creating representations for humans and tools.
 
-**Keywords:** metadata, visualization, rendering, code-visualization.
+**Keywords:** metadata, visualization, rendering.
 
 ## Languages supported:
 
