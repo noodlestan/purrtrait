@@ -12,22 +12,27 @@
   ],
   "author": "Noodlestan Collective",
   "license": "MIT",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/noodlestan/purrtrait.git",
     "directory": "libs/client-tsx"
   },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE-MIT",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
   "type": "module",
   "sideEffects": false,
   "main": "./src/index.ts",
-  "files": [
-    "src",
-    "LICENSE-MIT"
-  ],
   "scripts": {
     "dev": "vite build --watch",
     "lint": "prettier . -c && eslint . && tsc --noEmit",
@@ -41,9 +46,9 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "typescript": "5.9.3"
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "vite-plugin-solid": "2.11.12"
+    "vite-plugin-solid": "2.11.14"
   }
 }

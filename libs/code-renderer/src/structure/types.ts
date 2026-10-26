@@ -1,11 +1,5 @@
 export type CodeLayoutTokenKind =
-	| 'space'
-	| 'keyword'
-	| 'identifier'
-	| 'symbol'
-	| 'type-ref'
-	| 'string'
-	| 'literal';
+	'space' | 'keyword' | 'identifier' | 'symbol' | 'type-ref' | 'string' | 'literal';
 
 export type CodeLayoutToken<T extends CodeLayoutTokenKind = CodeLayoutTokenKind> = {
 	type: 'token';
@@ -25,9 +19,7 @@ export type CodeLayoutBlock = {
 };
 
 export type CodeLayoutNode =
-	| CodeLayoutToken<CodeLayoutTokenKind>
-	| CodeLayoutGroup
-	| CodeLayoutBlock;
+	CodeLayoutToken<CodeLayoutTokenKind> | CodeLayoutGroup | CodeLayoutBlock;
 
 export type CodeLayoutLine = {
 	indent: number;

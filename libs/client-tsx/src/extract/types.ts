@@ -9,6 +9,4 @@ export type TypescriptFunctionNode = ts.FunctionExpression | ts.ArrowFunction;
 export type TypescriptExpressionNode = ts.Expression;
 
 export type TypescriptNode =
-	| TypescriptElementNode
-	| TypescriptFunctionNode
-	| TypescriptExpressionNode;
+	TypescriptElementNode | TypescriptFunctionNode | TypescriptExpressionNode;
