@@ -1,6 +1,6 @@
-# Plan: Add JS Doc Renderer Package
+# Plan: Add JSDoc Renderer Package
 
-**ID:** `add-js-doc-renderer-package`
+**ID:** `add-jsdoc-renderer-package`
 
 **Status:** `PLANNING`
 
@@ -54,7 +54,7 @@ Port the JSDoc description/tags/links rendering core and the link resolver out o
 
 One new package in `$PURRTRAIT`, plus a rewiring of the existing Solid bindings. No behaviour changes for current consumers.
 
-### (Scope) Package: JS Doc Renderer
+### (Scope) Package: JSDoc Renderer
 
 **Record:** `$PURRTRAIT/libs/jsdoc-renderer/_records/package.art` — New
 
@@ -97,14 +97,14 @@ Executed from `$WORKSPACE/`. All work happens in `$PURRTRAIT` on branch `main`. 
 
 ## Items:
 
-| Iteration / Instructions               | Status     |
-| -------------------------------------- | ---------- |
-| Iteration: Add JS Doc Renderer Package | `PLANNING` |
-| Iteration: Rewire Solid Code on Core   | `PLANNING` |
+| Iteration / Instructions              | Status     |
+| ------------------------------------- | ---------- |
+| Iteration: Add JSDoc Renderer Package | `PLANNING` |
+| Iteration: Rewire Solid Code on Core  | `PLANNING` |
 
-### Iteration: Add JS Doc Renderer Package
+### Iteration: Add JSDoc Renderer Package
 
-**Id:** `add-js-doc-renderer-package`
+**Id:** `add-jsdoc-renderer-package`
 
 **Status:** `PLANNING`
 
@@ -130,11 +130,11 @@ Executed from `$WORKSPACE/`. All work happens in `$PURRTRAIT` on branch `main`. 
 
 #### Commits:
 
-| ID                            | Repository / Checkout / Branch    | Policy   | Hash  | Status     |
-| ----------------------------- | --------------------------------- | -------- | ----- | ---------- |
-| `add-js-doc-renderer-package` | Purrtrait / `$PURRTRAIT` / `main` | `NOPUSH` | (TBD) | `AUTHORED` |
+| ID                           | Repository / Checkout / Branch    | Policy   | Hash  | Status     |
+| ---------------------------- | --------------------------------- | -------- | ----- | ---------- |
+| `add-jsdoc-renderer-package` | Purrtrait / `$PURRTRAIT` / `main` | `NOPUSH` | (TBD) | `AUTHORED` |
 
-##### Commit: `add-js-doc-renderer-package`
+##### Commit: `add-jsdoc-renderer-package`
 
 **Message:**
 
@@ -164,7 +164,7 @@ build(jsdoc-renderer): Add framework-free js doc renderer package.
 
 **Dependencies:**
 
-- Iteration: Add JS Doc Renderer Package.
+- Iteration: Add JSDoc Renderer Package.
 
 #### Commits:
 
@@ -184,7 +184,7 @@ refactor(solid-code): Consume js doc renderer package.
 
 ### Next
 
-Draft the remaining iteration details or write instructions for Iteration: Add JS Doc Renderer Package, then delegate.
+Draft the remaining iteration details or write instructions for Iteration: Add JSDoc Renderer Package, then delegate.
 
 ### Blockers
 

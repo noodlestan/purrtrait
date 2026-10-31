@@ -149,7 +149,7 @@ build(astro-components): Add Astro components package with code block.
 
 **Dependencies:**
 
-- Iteration: Add JS Doc Renderer Package (Plan: Add JS Doc Renderer Package).
+- Iteration: Add JSDoc Renderer Package (Plan: Add JSDoc Renderer Package).
 
 #### Commits:
 
@@ -169,7 +169,7 @@ build(astro-components): Add js doc block component.
 
 ### Next
 
-Write instructions for Iteration: Add Astro Code Block (unblocked), then delegate. Iteration: Add Astro Js Doc Block waits for Plan: Add JS Doc Renderer Package.
+Write instructions for Iteration: Add Astro Code Block (unblocked), then delegate. Iteration: Add Astro Js Doc Block waits for Plan: Add JSDoc Renderer Package.
 
 ### Blockers
 
