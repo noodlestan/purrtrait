@@ -10,7 +10,7 @@
 
 **Purpose:** Add Astro renderers reusing the Purrtrait rendering core: a build-time code block with Shiki and a JSDoc block with descriptions, tags, and links.
 
-**Description:** New `$PURRTRAIT/libs/astro-components` package — `@purrtrait/astro-components` — with `.astro` components: `CodeBlock.astro` (declaration nodes → serialized code → Shiki-highlighted HTML at build time) and `JsDocBlock.astro` (description, tags, links from `@purrtrait/js-doc-renderer`, descriptions rendered as markdown). Peer dependencies on `astro` and `shiki`; no Solid anywhere.
+**Description:** New `$PURRTRAIT/libs/astro-components` package — `@purrtrait/astro-components` — with `.astro` components: `CodeBlock.astro` (declaration nodes → serialized code → Shiki-highlighted HTML at build time) and `JsDocBlock.astro` (description, tags, links from `@purrtrait/jsdoc-renderer`, descriptions rendered as markdown). Peer dependencies on `astro` and `shiki`; no Solid anywhere.
 
 ## Mandatory Reading
 
@@ -20,15 +20,15 @@
 
 ## Path Variables
 
-| Variable           | Resolved Path                                      | Purpose                                           |
-| ------------------ | -------------------------------------------------- | ------------------------------------------------- |
-| `$WORKSPACE`       | Current working directory                          | Workspace root directory.                         |
-| `$PURRTRAIT`       | `$WORKSPACE/checkouts/purrtrait`                   | Purrtrait monorepo — implementation target.       |
-| `$CODE_RENDERER`   | `$PURRTRAIT/libs/code-renderer`                    | Framework-free serializer consumed by CodeBlock.  |
-| `$JS_DOC_RENDERER` | `$PURRTRAIT/libs/js-doc-renderer`                  | Framework-free JSDoc core consumed by JsDocBlock. |
-| `$NO_COMPLY`       | `$WORKSPACE/checkouts/no-comply`                   | Reference components and wiring.                  |
-| `$ART_MD_WEB`      | `$WORKSPACE/checkouts/artificials/apps/art-md-web` | Consuming app; end-to-end validation.             |
-| `$ARTIFICIALS`     | `$WORKSPACE/checkouts/artificials`                 | Downstream project (milestone owner).             |
+| Variable          | Resolved Path                                      | Purpose                                           |
+| ----------------- | -------------------------------------------------- | ------------------------------------------------- |
+| `$WORKSPACE`      | Current working directory                          | Workspace root directory.                         |
+| `$PURRTRAIT`      | `$WORKSPACE/checkouts/purrtrait`                   | Purrtrait monorepo — implementation target.       |
+| `$CODE_RENDERER`  | `$PURRTRAIT/libs/code-renderer`                    | Framework-free serializer consumed by CodeBlock.  |
+| `$JSDOC_RENDERER` | `$PURRTRAIT/libs/jsdoc-renderer`                   | Framework-free JSDoc core consumed by JsDocBlock. |
+| `$NO_COMPLY`      | `$WORKSPACE/checkouts/no-comply`                   | Reference components and wiring.                  |
+| `$ART_MD_WEB`     | `$WORKSPACE/checkouts/artificials/apps/art-md-web` | Consuming app; end-to-end validation.             |
+| `$ARTIFICIALS`    | `$WORKSPACE/checkouts/artificials`                 | Downstream project (milestone owner).             |
 
 ## Summary
 
@@ -66,8 +66,8 @@ One new package in `$PURRTRAIT`. The consuming website work is planned separatel
 
 - Create the package with canonical name `@purrtrait/astro-components`; `.astro` components exported alongside a TypeScript helper barrel.
 - `CodeBlock.astro` — props `{ lang, nodes, context?, size? }`; serializes declaration nodes through `@purrtrait/code-renderer` (`createCodeSerializer` + `tsCodeLayout` from `@purrtrait/lang-ts`), highlights the resulting code with Shiki at build time (`codeToHtml`), and renders the HTML.
-- `JsDocBlock.astro` — props `{ jsdoc, title?, resolveLink? }` plus a default slot; renders the full docs surface the ported ApiScreen sections need: description (markdown → HTML via `marked`), tags list (`tag: value`), links list, and function parameter/return entries from `paramTags` / `returnsTag` — all from `@purrtrait/js-doc-renderer`.
-- Peer dependencies: `astro` `^7`, `shiki` `^4`; dependencies: `@purrtrait/code-renderer`, `@purrtrait/js-doc-renderer`, `@purrtrait/lang-ts`, `marked`.
+- `JsDocBlock.astro` — props `{ jsdoc, title?, resolveLink? }` plus a default slot; renders the full docs surface the ported ApiScreen sections need: description (markdown → HTML via `marked`), tags list (`tag: value`), links list, and function parameter/return entries from `paramTags` / `returnsTag` — all from `@purrtrait/jsdoc-renderer`.
+- Peer dependencies: `astro` `^7`, `shiki` `^4`; dependencies: `@purrtrait/code-renderer`, `@purrtrait/jsdoc-renderer`, `@purrtrait/lang-ts`, `marked`.
 
 **Partial:**
 
@@ -134,15 +134,15 @@ build(astro-components): Add Astro components package with code block.
 
 **Purpose:** Render descriptions, tags, and links in Astro with the shared core.
 
-**Description:** Add `JsDocBlock.astro` on top of `@purrtrait/js-doc-renderer`, with markdown descriptions and injectable link resolution.
+**Description:** Add `JsDocBlock.astro` on top of `@purrtrait/jsdoc-renderer`, with markdown descriptions and injectable link resolution.
 
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
 
 **Changes:**
 
-- Add `@purrtrait/js-doc-renderer` as a dependency of `$PURRTRAIT/libs/astro-components`.
+- Add `@purrtrait/jsdoc-renderer` as a dependency of `$PURRTRAIT/libs/astro-components`.
 - Add `src/components/JsDocBlock.astro`: props `{ jsdoc: JsDocData; title?: string; resolveLink?: (target: string) => { text: string; href: string } | undefined }`; build the renderer in frontmatter with the injected `resolveLink`; render description, tags, links, and — for function nodes — the `paramTags` / `returnsTag` entries; render nothing when all are absent.
-- Coverage rule: any tag, description, param, or member-description rendering gap found while porting the ApiScreen sections is closed here (or in `js-doc-renderer`), never in a consumer app.
+- Coverage rule: any tag, description, param, or member-description rendering gap found while porting the ApiScreen sections is closed here (or in `jsdoc-renderer`), never in a consumer app.
 - Render the description as markdown to HTML with `marked` so resolver links (`[text](href)`) become real anchors.
 - Add `src/components/Tags.astro` rendering `tag: value` entries, and a links list section; export all components from the package barrel.
 - Run `npm run ci` from `$PURRTRAIT`.
@@ -232,7 +232,7 @@ npm run ci
 - **Components package, not integration** — Astro "integrations" are config hooks; the `.astro` components are consumed directly by pages.
 - **Shiki at build time** — replaces the runtime `@purrpose/solid-shiki-service` resource; static output needs no async resource.
 - **Markdown descriptions** — the Solid reference renders descriptions as plain text (verified: `CodeDocBody` → `Text`, no markdown pass anywhere); Astro renders markdown so `[text](href)` links from the resolver become real anchors.
-- **Full docs surface owned here** — description, tags, links, and param/returns entries live in this package (or `js-doc-renderer`); consumer apps render member descriptions from node data, never through local helpers.
+- **Full docs surface owned here** — description, tags, links, and param/returns entries live in this package (or `jsdoc-renderer`); consumer apps render member descriptions from node data, never through local helpers.
 - **`resolveLink` injected as a prop** — keeps the package decoupled from any meta service; callers pass their own resolver.
 - **No token links in v1** — keeps Shiki output simple; `code-renderer`'s linker support stays available for a follow-up.
 

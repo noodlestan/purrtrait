@@ -10,7 +10,7 @@
 
 **Purpose:** Extract the framework-free JSDoc rendering core out of `@purrtrait/solid-code` into a new zero-dependency package.
 
-**Description:** New `$PURRTRAIT/libs/js-doc-renderer` package — `@purrtrait/js-doc-renderer` — porting `createJsDocBlockRenderer` and `createJsDocLinkResolver` as pure string/record logic (no `.tsx`, no `solid-js`). `@purrtrait/solid-code` is then rewired to consume the new package while keeping its public API stable, so Solid and Astro share one implementation.
+**Description:** New `$PURRTRAIT/libs/jsdoc-renderer` package — `@purrtrait/jsdoc-renderer` — porting `createJsDocBlockRenderer` and `createJsDocLinkResolver` as pure string/record logic (no `.tsx`, no `solid-js`). `@purrtrait/solid-code` is then rewired to consume the new package while keeping its public API stable, so Solid and Astro share one implementation.
 
 ## Mandatory Reading
 
@@ -31,7 +31,7 @@
 
 ## Summary
 
-Port the JSDoc description/tags/links rendering core and the link resolver out of the Solid bindings into `@purrtrait/js-doc-renderer`, keeping `@purrtrait/solid-code` API-stable on top of it.
+Port the JSDoc description/tags/links rendering core and the link resolver out of the Solid bindings into `@purrtrait/jsdoc-renderer`, keeping `@purrtrait/solid-code` API-stable on top of it.
 
 ## Context
 
@@ -56,22 +56,22 @@ One new package in `$PURRTRAIT`, plus a rewiring of the existing Solid bindings.
 
 ### (Scope) Package: JS Doc Renderer
 
-**Record:** `$PURRTRAIT/libs/js-doc-renderer/_records/package.art` — New
+**Record:** `$PURRTRAIT/libs/jsdoc-renderer/_records/package.art` — New
 
 **Role:** Owns the framework-free JSDoc rendering core.
 
 **Changes:**
 
-- Create the package with canonical name `@purrtrait/js-doc-renderer`; raw TypeScript entry (`main: ./src/index.ts`), `sideEffects: false`, zero runtime dependencies — same packaging style as `@purrtrait/code-renderer`.
+- Create the package with canonical name `@purrtrait/jsdoc-renderer`; raw TypeScript entry (`main: ./src/index.ts`), `sideEffects: false`, zero runtime dependencies — same packaging style as `@purrtrait/code-renderer`.
 - Export `createJsDocBlockRenderer(options?)` with `description(node)`, `tags(node)`, and `links(node)` accessors over `JsDocData`: inline `{@link …}` placeholders resolved and serialized as markdown links, `link` tag extracted into links, all other tags returned as entries.
 - Export `createJsDocLinkResolver(options?)` with an injectable `resolveLink` and a name/alias resolution that is pure string logic.
 - Export `params(node)` and `returns(node)` accessors reading `paramTags` and `returnsTag` from function declarations, so parameter and return tag rendering is part of the core surface.
 
 **Partial:**
 
-- `canonicalName` — `@purrtrait/js-doc-renderer`
+- `canonicalName` — `@purrtrait/jsdoc-renderer`
 - `owner` — Project: Purrtrait
-- `path` — `libs/js-doc-renderer`
+- `path` — `libs/jsdoc-renderer`
 
 ### (Scope) Package: Solid Code
 
@@ -81,13 +81,13 @@ One new package in `$PURRTRAIT`, plus a rewiring of the existing Solid bindings.
 
 **Changes:**
 
-- Replace the internal JSDoc renderer and resolver implementations with imports from `@purrtrait/js-doc-renderer`.
+- Replace the internal JSDoc renderer and resolver implementations with imports from `@purrtrait/jsdoc-renderer`.
 - Keep the public API stable: `createJsDocBlockRenderer`, `createJsDocLinkResolver`, `TagItem`, `JsDocLinkItem` remain importable from `@purrtrait/solid-code`.
 - Keep the Solid-only default link component in the bindings layer.
 
 **Dependencies:**
 
-- `@purrtrait/js-doc-renderer` must be published-or-linked within the workspace.
+- `@purrtrait/jsdoc-renderer` must be published-or-linked within the workspace.
 
 ## Execution Context
 
@@ -110,13 +110,13 @@ Executed from `$WORKSPACE/`. All work happens in `$PURRTRAIT` on branch `main`. 
 
 **Purpose:** Create the framework-free JSDoc rendering package.
 
-**Description:** New `$PURRTRAIT/libs/js-doc-renderer` package with the ported block renderer and link resolver, covered by unit tests.
+**Description:** New `$PURRTRAIT/libs/jsdoc-renderer` package with the ported block renderer and link resolver, covered by unit tests.
 
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
 
 **Changes:**
 
-- Scaffold `$PURRTRAIT/libs/js-doc-renderer/` following sibling package conventions (`package.json` with raw-TS `main`, `sideEffects: false`, `tsconfig.json`, `README.md`, `_records/package.art`).
+- Scaffold `$PURRTRAIT/libs/jsdoc-renderer/` following sibling package conventions (`package.json` with raw-TS `main`, `sideEffects: false`, `tsconfig.json`, `README.md`, `_records/package.art`).
 - Port the description accessor: split on `/\{@link\s+([^}]+)\}/g`, resolve each target through the link resolver, serialize resolved links as `[text](href)`, fall back to the raw target text when unresolved.
 - Port the tags accessor (all `node.tags` entries except `link`) and the links accessor (each `link` tag value resolved to `{ text, href }`).
 - Port the link resolver with injectable `resolveLink`; keep name/alias handling as pure functions (no components).
@@ -139,7 +139,7 @@ Executed from `$WORKSPACE/`. All work happens in `$PURRTRAIT` on branch `main`. 
 **Message:**
 
 ```text
-build(js-doc-renderer): Add framework-free js doc renderer package.
+build(jsdoc-renderer): Add framework-free js doc renderer package.
 ```
 
 ### Iteration: Rewire Solid Code on Core
@@ -150,13 +150,13 @@ build(js-doc-renderer): Add framework-free js doc renderer package.
 
 **Purpose:** Make `@purrtrait/solid-code` consume the shared core without API changes.
 
-**Description:** Remove the duplicated renderer/resolver logic from `solid-code`, depend on `@purrtrait/js-doc-renderer`, and keep every existing import path working.
+**Description:** Remove the duplicated renderer/resolver logic from `solid-code`, depend on `@purrtrait/jsdoc-renderer`, and keep every existing import path working.
 
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
 
 **Changes:**
 
-- Add `@purrtrait/js-doc-renderer` as a dependency of `$SOLID_CODE`.
+- Add `@purrtrait/jsdoc-renderer` as a dependency of `$SOLID_CODE`.
 - Replace `solid-code`'s JSDoc renderer and resolver internals with the imported core; re-export `createJsDocBlockRenderer`, `createJsDocLinkResolver`, `TagItem`, and `JsDocLinkItem` so consumers see no difference.
 - Keep the Solid default link component (`SolidCodeLinkDefault`) and the `CodeBlock`/`CodeLayoutRenderer` components untouched.
 - Verify the `$NO_COMPLY` wiring pattern (`createJsDocLinkResolver({ resolveLink })` → `createJsDocBlockRenderer({ linkResolver })`) still type-checks against the new implementation.
@@ -248,11 +248,11 @@ npm run ci
 - **Raw TypeScript entry** — matches `code-renderer` and `lang-ts` packaging, consumable from bundlers and Astro.
 - **Function param and return tags are core** — the Art MD `signature.ts` extension proved the need; the core owns `paramTags` / `returnsTag` so every renderer inherits them.
 - **Stable Solid API** — `solid-code` re-exports the core so `$NO_COMPLY` needs no changes.
-- **Package name** — `@purrtrait/js-doc-renderer`, keeping "renderer" consistent with `code-renderer`.
+- **Package name** — `@purrtrait/jsdoc-renderer`, keeping "renderer" consistent with `code-renderer`.
 
 ### Follow Ups
 
-- Publish `@purrtrait/js-doc-renderer` (and siblings) to npm.
+- Publish `@purrtrait/jsdoc-renderer` (and siblings) to npm.
 - Consider moving the pure string helpers of `code-renderer` that touch links to share the same resolver contract.
 
 ### Feedback
