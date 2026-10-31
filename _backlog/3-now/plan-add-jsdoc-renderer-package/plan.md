@@ -114,7 +114,7 @@ Executed from `$WORKSPACE/`. Iterations 1–3 happen in `$PURRTRAIT` on branch `
 | ------------------------------------------------------------------------------------------ | ------- |
 | Iteration: Add JSDoc Renderer Package `./instructions/add-jsdoc-renderer-package.md`       | `DONE`  |
 | Iteration: Drop Solid Code JSDoc Exports `./instructions/drop-solid-code-jsdoc-exports.md` | `DONE`  |
-| Iteration: Release JSDoc Renderer 0.0.1 `./instructions/release-jsdoc-renderer.md`         | `READY` |
+| Iteration: Release JSDoc Renderer 0.0.1 `./instructions/release-jsdoc-renderer.md`         | `DONE`  |
 | Iteration: Update No Comply Imports `./instructions/update-no-comply-imports.md`           | `READY` |
 
 ### Iteration: Add JSDoc Renderer Package
@@ -207,7 +207,7 @@ refactor(solid-code): Drop JSDoc exports; core lives in `@purrtrait/jsdoc-render
 
 **Id:** `release-jsdoc-renderer`
 
-**Status:** `READY`
+**Status:** `DONE`
 
 **Purpose:** Publish the new core and the breaking solid-code release — the only manual gate in the plan.
 
@@ -216,6 +216,8 @@ refactor(solid-code): Drop JSDoc exports; core lives in `@purrtrait/jsdoc-render
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
 
 **Instructions:** `./instructions/release-jsdoc-renderer.md`
+
+**Report:** `./instructions/release-jsdoc-renderer__report.md`
 
 **Changes:**
 
@@ -232,10 +234,10 @@ refactor(solid-code): Drop JSDoc exports; core lives in `@purrtrait/jsdoc-render
 
 #### Commits:
 
-| ID                       | Repository / Checkout / Branch    | Policy     | Hash  | Status     |
-| ------------------------ | --------------------------------- | ---------- | ----- | ---------- |
-| `release-jsdoc-renderer` | Purrtrait / `$PURRTRAIT` / `main` | `NOCOMMIT` | (TBD) | `AUTHORED` |
-| `release-solid-code`     | Purrtrait / `$PURRTRAIT` / `main` | `NOCOMMIT` | (TBD) | `AUTHORED` |
+| ID                       | Repository / Checkout / Branch    | Policy     | Hash      | Status      |
+| ------------------------ | --------------------------------- | ---------- | --------- | ----------- |
+| `release-jsdoc-renderer` | Purrtrait / `$PURRTRAIT` / `main` | `NOCOMMIT` | `a71a4d4` | `COMMITTED` |
+| `release-solid-code`     | Purrtrait / `$PURRTRAIT` / `main` | `NOCOMMIT` | `913417c` | `COMMITTED` |
 
 ##### Commit: `release-jsdoc-renderer`
 
@@ -301,7 +303,7 @@ refactor(standard-ui-demo): Import JSDoc core from `@purrtrait/jsdoc-renderer`.
 
 ### Next
 
-Iterations 1–2 are DONE (`79a6883`, `592a162`, both not pushed). Delegate Iteration: Release JSDoc Renderer 0.0.1 next — it stops at the publish gate: the worker prepares and stages the version bumps, changelogs, deployment record, and lockfile, then reports a blocker; the user runs `npm publish`, then tells the delegator to commit and continue. Iteration: Update No Comply Imports comes last.
+Iterations 1–3 are DONE (`79a6883`, `592a162`, `a71a4d4`, `913417c`, none pushed) and both packages are published. Delegate Iteration: Update No Comply Imports last; its worker may hit a brief registry-processing window when resolving the fresh versions — retry before reporting a blocker.
 
 ### Blockers
 
@@ -358,6 +360,7 @@ npm run ci
 
 - **`@purrtrait/jsdoc-renderer` delivered** — commit `79a6883` on `main` (not pushed); `npm run ci` green with 18/18 tests and 96% statement coverage; all export, no-`.tsx`, and zero-dependency checks passed (details in the iteration 1 report).
 - **Solid JSDoc surface dropped** — commit `592a162` on `main` (not pushed); `libs/solid-code/src/controllers/` deleted (306 lines), `@purrtrait/solid-code` now exports only `CodeBlock`, `CodeLayoutRenderer`, `CodeLinkComponent`; whole-repo CI green (details in the iteration 2 report).
+- **Release gate cleared** — `@purrtrait/jsdoc-renderer@0.0.1` and `@purrtrait/solid-code@0.0.13` published by the user (confirmed, no registry check performed during the processing window); release commits `a71a4d4` and `913417c` on `main`, both not pushed (details in the iteration 3 report).
 
 ### Decisions
 
@@ -381,3 +384,4 @@ npm run ci
 - Verification that `createJsDocBlockRenderer` is ~90% pure string logic came from pairing analysis; the `.tsx` extension hides almost no framework coupling beyond the default link component.
 - IRRELEVANT-for-delegation template gaps for the plan owner: the inline context renders only Upstream Work and Knowledge — `Required Skills`, `Domains`, `Resource Kinds in Scope`, and `Workflows` sections from `$DOMAINS/work/templates/work-item-context-section.tart` are omitted (compact shape shared with Plan: Astro Components).
 - **Source offset quirk ported verbatim** (worker report) — in the `description` loop, `continue` skips the `offset` update, so an unresolved target or `serializeLink → undefined` re-emits the raw description tail; pinned by characterization tests. Fix deferred to Follow Ups.
+- **Lockfile placement adjusted at the gate** (user instruction) — `package-lock.json` carries both bumped versions, so it was committed with `release-solid-code` (`913417c`) rather than with `release-jsdoc-renderer` (`a71a4d4`); instructions assumed the opposite split.
