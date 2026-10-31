@@ -2,7 +2,7 @@
 
 **ID:** `add-jsdoc-renderer-package`
 
-**Status:** `READY`
+**Status:** `WORKING`
 
 **Template:** `$DOMAINS/plans/templates/plan.tart`
 
@@ -112,7 +112,7 @@ Executed from `$WORKSPACE/`. Iterations 1–3 happen in `$PURRTRAIT` on branch `
 
 | Iteration / Instructions                                                                   | Status  |
 | ------------------------------------------------------------------------------------------ | ------- |
-| Iteration: Add JSDoc Renderer Package `./instructions/add-jsdoc-renderer-package.md`       | `READY` |
+| Iteration: Add JSDoc Renderer Package `./instructions/add-jsdoc-renderer-package.md`       | `DONE`  |
 | Iteration: Drop Solid Code JSDoc Exports `./instructions/drop-solid-code-jsdoc-exports.md` | `READY` |
 | Iteration: Release JSDoc Renderer 0.0.1 `./instructions/release-jsdoc-renderer.md`         | `READY` |
 | Iteration: Update No Comply Imports `./instructions/update-no-comply-imports.md`           | `READY` |
@@ -121,7 +121,7 @@ Executed from `$WORKSPACE/`. Iterations 1–3 happen in `$PURRTRAIT` on branch `
 
 **Id:** `add-jsdoc-renderer-package`
 
-**Status:** `READY`
+**Status:** `DONE`
 
 **Purpose:** Create the zero-dependency JSDoc rendering package consumed by all renderers.
 
@@ -130,6 +130,8 @@ Executed from `$WORKSPACE/`. Iterations 1–3 happen in `$PURRTRAIT` on branch `
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
 
 **Instructions:** `./instructions/add-jsdoc-renderer-package.md`
+
+**Report:** `./instructions/add-jsdoc-renderer-package__report.md`
 
 **Changes:**
 
@@ -148,9 +150,9 @@ Executed from `$WORKSPACE/`. Iterations 1–3 happen in `$PURRTRAIT` on branch `
 
 #### Commits:
 
-| ID                           | Repository / Checkout / Branch    | Policy   | Hash  | Status     |
-| ---------------------------- | --------------------------------- | -------- | ----- | ---------- |
-| `add-jsdoc-renderer-package` | Purrtrait / `$PURRTRAIT` / `main` | `NOPUSH` | (TBD) | `AUTHORED` |
+| ID                           | Repository / Checkout / Branch    | Policy   | Hash      | Status      |
+| ---------------------------- | --------------------------------- | -------- | --------- | ----------- |
+| `add-jsdoc-renderer-package` | Purrtrait / `$PURRTRAIT` / `main` | `NOPUSH` | `79a6883` | `COMMITTED` |
 
 ##### Commit: `add-jsdoc-renderer-package`
 
@@ -297,7 +299,7 @@ refactor(standard-ui-demo): Import JSDoc core from `@purrtrait/jsdoc-renderer`.
 
 ### Next
 
-All four iterations are planned with authored instructions and `READY`; delegate in order: Iteration: Add JSDoc Renderer Package, Iteration: Drop Solid Code JSDoc Exports, Iteration: Release JSDoc Renderer 0.0.1 (stops at the publish gate: the user runs `npm publish`, then tells the delegator to commit and continue), Iteration: Update No Comply Imports.
+Iteration: Add JSDoc Renderer Package is DONE (`79a6883`, not pushed). Delegate Iteration: Drop Solid Code JSDoc Exports next, then Iteration: Release JSDoc Renderer 0.0.1 (stops at the publish gate: the user runs `npm publish`, then tells the delegator to commit and continue), and Iteration: Update No Comply Imports last.
 
 ### Blockers
 
@@ -352,7 +354,7 @@ npm run ci
 
 ### Evidence
 
-- None yet.
+- **`@purrtrait/jsdoc-renderer` delivered** — commit `79a6883` on `main` (not pushed); `npm run ci` green with 18/18 tests and 96% statement coverage; all export, no-`.tsx`, and zero-dependency checks passed (details in the iteration 1 report).
 
 ### Decisions
 
@@ -367,8 +369,12 @@ npm run ci
 
 - **Purrtrait parking lot missing** — `$PURRTRAIT/_guide.md` points to `_backlog/_parking-lot.md`, which does not exist yet; create it or drop the reference (Plan: Astro Components references it too).
 - Publish `@purrtrait/jsdoc-renderer` (and siblings) to npm.
+- **Fix the `description` offset skip** — move `offset = index + full.length` before the fallback branches in both `$SOLID_CODE` source and the new core, then unpin the two characterization tests (details in the iteration 1 report).
+- **Decide coverage thresholds for `jsdoc-renderer`** — the new package runs on vitest defaults; sibling packages configure 90/90/70/90 thresholds in `vitest.config.ts`.
 - Consider moving the pure string helpers of `code-renderer` that touch links to share the same resolver contract.
 
 ### Feedback
 
 - Verification that `createJsDocBlockRenderer` is ~90% pure string logic came from pairing analysis; the `.tsx` extension hides almost no framework coupling beyond the default link component.
+- IRRELEVANT-for-delegation template gaps for the plan owner: the inline context renders only Upstream Work and Knowledge — `Required Skills`, `Domains`, `Resource Kinds in Scope`, and `Workflows` sections from `$DOMAINS/work/templates/work-item-context-section.tart` are omitted (compact shape shared with Plan: Astro Components).
+- **Source offset quirk ported verbatim** (worker report) — in the `description` loop, `continue` skips the `offset` update, so an unresolved target or `serializeLink → undefined` re-emits the raw description tail; pinned by characterization tests. Fix deferred to Follow Ups.
