@@ -1,0 +1,52 @@
+# Module
+
+## Package: JSDoc Renderer
+
+**Purpose:** Framework-free JSDoc rendering core.
+
+**Description:** Pure TypeScript implementation of the Purrtrait JSDoc rendering core: description, tags, and links accessors with link resolution, shared by every renderer.
+
+**Owner:** Project: Purrtrait
+
+**Namespace:** Namespace: Purrtrait
+
+**Author:** Noodlestan Collective
+
+**Path:** `libs/jsdoc-renderer/`
+
+**Canonical Name:** `@purrtrait/jsdoc-renderer`
+
+**Published:** `true`
+
+**Private:** `false`
+
+**Keywords:**
+
+- library
+- jsdoc
+- metadata
+- visualization
+- rendering
+
+**Deployment:** NPM Package Deployment: JSDoc Renderer
+
+**Files:**
+
+- `src`
+- `README.md`
+- `LICENSE-MIT`
+- `CHANGELOG.md`
+
+**Language:** TypeScript
+
+**PackageFile:** `package.json`
+
+**Dependencies:**
+
+- Runtime:
+  - None — zero runtime dependencies.
+
+- Dev:
+  - `@purrception/lang-ts` @ `0.1.1` — JsDoc data types (type-only).
+
+**License:** License: Noodlestan 2025 MIT

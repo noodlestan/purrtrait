@@ -1,0 +1,51 @@
+{
+  "name": "@purrtrait/jsdoc-renderer",
+  "version": "0.0.0",
+  "description": "Purrtrait JSDoc rendering core.",
+  "keywords": [
+    "library",
+    "jsdoc",
+    "metadata",
+    "visualization",
+    "rendering"
+  ],
+  "author": "Noodlestan Collective",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noodlestan/purrtrait.git",
+    "directory": "libs/jsdoc-renderer"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE-MIT",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "scripts": {
+    "dev": "vite build --watch",
+    "lint": "prettier . -c && eslint . && tsc --noEmit",
+    "lint:fix": "prettier . -c --write && eslint . --fix",
+    "build": "vite build",
+    "build:clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:ci": "vitest run --coverage",
+    "test:watch": "vitest",
+    "ci": "npm run lint && npm run build && npm run test:ci"
+  },
+  "dependencies": {},
+  "peerDependencies": {},
+  "devDependencies": {
+    "@purrception/lang-ts": "0.1.1"
+  }
+}
