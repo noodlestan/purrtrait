@@ -2,7 +2,7 @@
 
 **ID:** `add-jsdoc-renderer-package`
 
-**Status:** `DONE`
+**Status:** `WORKING`
 
 **Template:** `$DOMAINS/plans/templates/plan.tart`
 
@@ -104,18 +104,19 @@ One new package in `$PURRTRAIT`, a cleanup of the existing Solid bindings (break
 
 ## Execution Context
 
-Executed from `$WORKSPACE/`. Iterations 1–3 happen in `$PURRTRAIT` on branch `main` (verification: `npm run ci` — prettier, unit tests, build via turbo); Iteration 4 happens in `$NO_COMPLY` on branch `main` (verification: `npm run ci` — lint, build, test). Iteration 3 stops at a publish gate: the worker stages the release changes and reports a blocker; the user runs `npm publish`, then tells the delegator to commit and continue.
+Executed from `$WORKSPACE/`. Iterations 1–3 and 5 happen in `$PURRTRAIT` on branch `main` (verification: `npm run ci` — prettier, unit tests, build via turbo); Iteration 4 happens in `$NO_COMPLY` on branch `main` (verification: `npm run ci` — lint, build, test). Iterations 3 and 5 stop at a publish gate: the worker stages the release changes and reports a blocker; the user runs `npm publish`, then tells the delegator to commit and continue.
 
 ---
 
 ## Items:
 
-| Iteration / Instructions                                                                   | Status |
-| ------------------------------------------------------------------------------------------ | ------ |
-| Iteration: Add JSDoc Renderer Package `./instructions/add-jsdoc-renderer-package.md`       | `DONE` |
-| Iteration: Drop Solid Code JSDoc Exports `./instructions/drop-solid-code-jsdoc-exports.md` | `DONE` |
-| Iteration: Release JSDoc Renderer 0.0.1 `./instructions/release-jsdoc-renderer.md`         | `DONE` |
-| Iteration: Update No Comply Imports `./instructions/update-no-comply-imports.md`           | `DONE` |
+| Iteration / Instructions                                                                   | Status  |
+| ------------------------------------------------------------------------------------------ | ------- |
+| Iteration: Add JSDoc Renderer Package `./instructions/add-jsdoc-renderer-package.md`       | `DONE`  |
+| Iteration: Drop Solid Code JSDoc Exports `./instructions/drop-solid-code-jsdoc-exports.md` | `DONE`  |
+| Iteration: Release JSDoc Renderer 0.0.1 `./instructions/release-jsdoc-renderer.md`         | `DONE`  |
+| Iteration: Update No Comply Imports `./instructions/update-no-comply-imports.md`           | `DONE`  |
+| Iteration: Consolidate JSDoc Rendering `./instructions/consolidate-jsdoc-rendering.md`     | `READY` |
 
 ### Iteration: Add JSDoc Renderer Package
 
@@ -301,11 +302,56 @@ release(solid-code): Bump to 0.0.13 after dropping JSDoc exports.
 refactor(standard-ui-demo): Import JSDoc core from `@purrtrait/jsdoc-renderer`.
 ```
 
+### Iteration: Consolidate JSDoc Rendering
+
+**Id:** `consolidate-jsdoc-rendering`
+
+**Status:** `READY`
+
+**Purpose:** Fix the pinned `description()` fallback bug, enforce sibling coverage thresholds, and ship `@purrtrait/jsdoc-renderer@0.0.2` through the same publish gate.
+
+**Description:** Repair the `offset`-skip in the description loop, unpin the characterization tests, add `vitest.config.ts` mirroring the sibling thresholds, then prepare the 0.0.2 release (version, changelog, lockfile), stage everything, and stop at the publish gate for the user's `npm publish`.
+
+**Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
+
+**Instructions:** `./instructions/consolidate-jsdoc-rendering.md`
+
+**Changes:**
+
+- Fix `description()` in `$PURRTRAIT/libs/jsdoc-renderer/src/controllers/JsDocBlockRenderer/createJsDocBlockRenderer.ts`: hoist `offset = index + full.length` above the fallback branches so an unresolved target or `serializeLink → undefined` no longer re-emit the raw description tail (`See {@link missing} now.` must render `See missing now.`).
+- Unpin the two characterization expectations in `createJsDocBlockRenderer.test.ts`, assert the corrected output, and extend tests to cover the currently uncovered branches (per the last coverage report: `createJsDocBlockRenderer.ts` lines 28/51, `resolveName.ts` line 25, `createJsDocLinkResolver.ts` line 8).
+- Add `$PURRTRAIT/libs/jsdoc-renderer/vitest.config.ts` mirroring `$SOLID_CODE/vitest.config.ts` — `include: ['src/**/*.test.ts']`, `passWithNoTests`, v8 provider, `src/index.ts` excluded, thresholds `lines: 90, functions: 90, branches: 70, statements: 90`.
+- Bump `$PURRTRAIT/libs/jsdoc-renderer/package.json` from `0.0.1` to `0.0.2`, add the `## 0.0.2` CHANGELOG entry, refresh the lockfile (`npm install` from `$PURRTRAIT`), and run `npm run ci` — thresholds enforced and green.
+- Stage all changes and REPORT A BLOCKER — awaiting the user's `npm publish` of `@purrtrait/jsdoc-renderer@0.0.2`.
+- After the user confirms the publish: create the commit with the blueprint message, do NOT push, and continue.
+
+**Dependencies:**
+
+- None.
+
+#### Commits:
+
+| ID                           | Repository / Checkout / Branch    | Policy     | Hash  | Status     |
+| ---------------------------- | --------------------------------- | ---------- | ----- | ---------- |
+| `consolidate-jsdoc-renderer` | Purrtrait / `$PURRTRAIT` / `main` | `NOCOMMIT` | (TBD) | `AUTHORED` |
+
+##### Commit: `consolidate-jsdoc-renderer`
+
+**Message:**
+
+```text
+fix(jsdoc-renderer): Repair description fallback; enforce coverage; release 0.0.2.
+
+- Fix the `description()` offset skip so unresolved links no longer re-emit the raw tail.
+- Add `vitest.config.ts` mirroring sibling coverage thresholds; extend tests.
+- Bump to 0.0.2 with a CHANGELOG entry for the publish.
+```
+
 ## Work
 
 ### Next
 
-All four iterations are DONE (`79a6883`, `592a162`, `a71a4d4`, `913417c` in `$PURRTRAIT`; `878cd46` in `$NO_COMPLY` — none pushed). Close-out remaining: reflect completion upstream — milestone Phase 4 row → `DONE` (handled by the plan owner's boss) — and move this plan from `3-now` to `1-done` when closing.
+Iterations 1–4 are DONE (`79a6883`, `592a162`, `a71a4d4`, `913417c` in `$PURRTRAIT`; `878cd46` in `$NO_COMPLY` — none pushed). Delegate Iteration: Consolidate JSDoc Rendering next — it stops at the publish gate: the worker fixes the `description()` fallback bug, enforces coverage thresholds, stages the 0.0.2 release, and reports a blocker; the user publishes `@purrtrait/jsdoc-renderer@0.0.2`, then the delegator commits and continues. The plan returns to `DONE` only after that iteration lands; then reflect completion upstream and move to `1-done`.
 
 ### Blockers
 
@@ -377,9 +423,7 @@ npm run ci
 ### Follow Ups
 
 - **Purrtrait parking lot missing** — `$PURRTRAIT/_guide.md` points to `_backlog/_parking-lot.md`, which does not exist yet; create it or drop the reference (Plan: Astro Components references it too).
-- Publish `@purrtrait/jsdoc-renderer` (and siblings) to npm.
-- **Fix the `description` offset skip** — move `offset = index + full.length` before the fallback branches in both `$SOLID_CODE` source and the new core, then unpin the two characterization tests (details in the iteration 1 report).
-- **Decide coverage thresholds for `jsdoc-renderer`** — the new package runs on vitest defaults; sibling packages configure 90/90/70/90 thresholds in `vitest.config.ts`.
+- **Publish sibling packages when they change** — `@purrtrait/code-renderer`, `@purrtrait/lang-ts`, `@purrtrait/client-tsx`, `@purrtrait/view-tsx` (all `0.0.11`) have no release pipeline; each release follows the manual version bump + changelog + `npm publish` recipe, then consumers bump their pinned versions.
 - Consider moving the pure string helpers of `code-renderer` that touch links to share the same resolver contract.
 
 ### Feedback
