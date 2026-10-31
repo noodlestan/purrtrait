@@ -113,7 +113,7 @@ Executed from `$WORKSPACE/`. Iterations 1–3 happen in `$PURRTRAIT` on branch `
 | Iteration / Instructions                                                                   | Status  |
 | ------------------------------------------------------------------------------------------ | ------- |
 | Iteration: Add JSDoc Renderer Package `./instructions/add-jsdoc-renderer-package.md`       | `DONE`  |
-| Iteration: Drop Solid Code JSDoc Exports `./instructions/drop-solid-code-jsdoc-exports.md` | `READY` |
+| Iteration: Drop Solid Code JSDoc Exports `./instructions/drop-solid-code-jsdoc-exports.md` | `DONE`  |
 | Iteration: Release JSDoc Renderer 0.0.1 `./instructions/release-jsdoc-renderer.md`         | `READY` |
 | Iteration: Update No Comply Imports `./instructions/update-no-comply-imports.md`           | `READY` |
 
@@ -166,7 +166,7 @@ build(jsdoc-renderer): Add framework-free `@purrtrait/jsdoc-renderer` package.
 
 **Id:** `drop-solid-code-jsdoc-exports`
 
-**Status:** `READY`
+**Status:** `DONE`
 
 **Purpose:** Remove the duplicated JSDoc surface from `@purrtrait/solid-code` — a deliberate breaking change.
 
@@ -175,6 +175,8 @@ build(jsdoc-renderer): Add framework-free `@purrtrait/jsdoc-renderer` package.
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
 
 **Instructions:** `./instructions/drop-solid-code-jsdoc-exports.md`
+
+**Report:** `./instructions/drop-solid-code-jsdoc-exports__report.md`
 
 **Changes:**
 
@@ -189,9 +191,9 @@ build(jsdoc-renderer): Add framework-free `@purrtrait/jsdoc-renderer` package.
 
 #### Commits:
 
-| ID                              | Repository / Checkout / Branch    | Policy   | Hash  | Status     |
-| ------------------------------- | --------------------------------- | -------- | ----- | ---------- |
-| `drop-solid-code-jsdoc-exports` | Purrtrait / `$PURRTRAIT` / `main` | `NOPUSH` | (TBD) | `AUTHORED` |
+| ID                              | Repository / Checkout / Branch    | Policy   | Hash      | Status      |
+| ------------------------------- | --------------------------------- | -------- | --------- | ----------- |
+| `drop-solid-code-jsdoc-exports` | Purrtrait / `$PURRTRAIT` / `main` | `NOPUSH` | `592a162` | `COMMITTED` |
 
 ##### Commit: `drop-solid-code-jsdoc-exports`
 
@@ -299,7 +301,7 @@ refactor(standard-ui-demo): Import JSDoc core from `@purrtrait/jsdoc-renderer`.
 
 ### Next
 
-Iteration: Add JSDoc Renderer Package is DONE (`79a6883`, not pushed). Delegate Iteration: Drop Solid Code JSDoc Exports next, then Iteration: Release JSDoc Renderer 0.0.1 (stops at the publish gate: the user runs `npm publish`, then tells the delegator to commit and continue), and Iteration: Update No Comply Imports last.
+Iterations 1–2 are DONE (`79a6883`, `592a162`, both not pushed). Delegate Iteration: Release JSDoc Renderer 0.0.1 next — it stops at the publish gate: the worker prepares and stages the version bumps, changelogs, deployment record, and lockfile, then reports a blocker; the user runs `npm publish`, then tells the delegator to commit and continue. Iteration: Update No Comply Imports comes last.
 
 ### Blockers
 
@@ -355,6 +357,7 @@ npm run ci
 ### Evidence
 
 - **`@purrtrait/jsdoc-renderer` delivered** — commit `79a6883` on `main` (not pushed); `npm run ci` green with 18/18 tests and 96% statement coverage; all export, no-`.tsx`, and zero-dependency checks passed (details in the iteration 1 report).
+- **Solid JSDoc surface dropped** — commit `592a162` on `main` (not pushed); `libs/solid-code/src/controllers/` deleted (306 lines), `@purrtrait/solid-code` now exports only `CodeBlock`, `CodeLayoutRenderer`, `CodeLinkComponent`; whole-repo CI green (details in the iteration 2 report).
 
 ### Decisions
 
