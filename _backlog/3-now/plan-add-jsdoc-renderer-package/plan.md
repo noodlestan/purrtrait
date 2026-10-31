@@ -2,7 +2,7 @@
 
 **ID:** `add-jsdoc-renderer-package`
 
-**Status:** `WORKING`
+**Status:** `DONE`
 
 **Template:** `$DOMAINS/plans/templates/plan.tart`
 
@@ -110,12 +110,12 @@ Executed from `$WORKSPACE/`. Iterations 1–3 happen in `$PURRTRAIT` on branch `
 
 ## Items:
 
-| Iteration / Instructions                                                                   | Status  |
-| ------------------------------------------------------------------------------------------ | ------- |
-| Iteration: Add JSDoc Renderer Package `./instructions/add-jsdoc-renderer-package.md`       | `DONE`  |
-| Iteration: Drop Solid Code JSDoc Exports `./instructions/drop-solid-code-jsdoc-exports.md` | `DONE`  |
-| Iteration: Release JSDoc Renderer 0.0.1 `./instructions/release-jsdoc-renderer.md`         | `DONE`  |
-| Iteration: Update No Comply Imports `./instructions/update-no-comply-imports.md`           | `READY` |
+| Iteration / Instructions                                                                   | Status |
+| ------------------------------------------------------------------------------------------ | ------ |
+| Iteration: Add JSDoc Renderer Package `./instructions/add-jsdoc-renderer-package.md`       | `DONE` |
+| Iteration: Drop Solid Code JSDoc Exports `./instructions/drop-solid-code-jsdoc-exports.md` | `DONE` |
+| Iteration: Release JSDoc Renderer 0.0.1 `./instructions/release-jsdoc-renderer.md`         | `DONE` |
+| Iteration: Update No Comply Imports `./instructions/update-no-comply-imports.md`           | `DONE` |
 
 ### Iteration: Add JSDoc Renderer Package
 
@@ -264,7 +264,7 @@ release(solid-code): Bump to 0.0.13 after dropping JSDoc exports.
 
 **Id:** `update-no-comply-imports`
 
-**Status:** `READY`
+**Status:** `DONE`
 
 **Purpose:** Migrate the reference app to the new import paths immediately after publishing.
 
@@ -273,6 +273,8 @@ release(solid-code): Bump to 0.0.13 after dropping JSDoc exports.
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
 
 **Instructions:** `./instructions/update-no-comply-imports.md`
+
+**Report:** `./instructions/update-no-comply-imports__report.md`
 
 **Changes:**
 
@@ -287,9 +289,9 @@ release(solid-code): Bump to 0.0.13 after dropping JSDoc exports.
 
 #### Commits:
 
-| ID                         | Repository / Checkout / Branch    | Policy   | Hash  | Status     |
-| -------------------------- | --------------------------------- | -------- | ----- | ---------- |
-| `update-no-comply-imports` | No Comply / `$NO_COMPLY` / `main` | `NOPUSH` | (TBD) | `AUTHORED` |
+| ID                         | Repository / Checkout / Branch    | Policy   | Hash      | Status      |
+| -------------------------- | --------------------------------- | -------- | --------- | ----------- |
+| `update-no-comply-imports` | No Comply / `$NO_COMPLY` / `main` | `NOPUSH` | `878cd46` | `COMMITTED` |
 
 ##### Commit: `update-no-comply-imports`
 
@@ -303,7 +305,7 @@ refactor(standard-ui-demo): Import JSDoc core from `@purrtrait/jsdoc-renderer`.
 
 ### Next
 
-Iterations 1–3 are DONE (`79a6883`, `592a162`, `a71a4d4`, `913417c`, none pushed) and both packages are published. Delegate Iteration: Update No Comply Imports last; its worker may hit a brief registry-processing window when resolving the fresh versions — retry before reporting a blocker.
+All four iterations are DONE (`79a6883`, `592a162`, `a71a4d4`, `913417c` in `$PURRTRAIT`; `878cd46` in `$NO_COMPLY` — none pushed). Close-out remaining: reflect completion upstream — milestone Phase 4 row → `DONE` (handled by the plan owner's boss) — and move this plan from `3-now` to `1-done` when closing.
 
 ### Blockers
 
@@ -361,6 +363,7 @@ npm run ci
 - **`@purrtrait/jsdoc-renderer` delivered** — commit `79a6883` on `main` (not pushed); `npm run ci` green with 18/18 tests and 96% statement coverage; all export, no-`.tsx`, and zero-dependency checks passed (details in the iteration 1 report).
 - **Solid JSDoc surface dropped** — commit `592a162` on `main` (not pushed); `libs/solid-code/src/controllers/` deleted (306 lines), `@purrtrait/solid-code` now exports only `CodeBlock`, `CodeLayoutRenderer`, `CodeLinkComponent`; whole-repo CI green (details in the iteration 2 report).
 - **Release gate cleared** — `@purrtrait/jsdoc-renderer@0.0.1` and `@purrtrait/solid-code@0.0.13` published by the user (confirmed, no registry check performed during the processing window); release commits `a71a4d4` and `913417c` on `main`, both not pushed (details in the iteration 3 report).
+- **No comply migrated** — commit `878cd46` on `main` in `$NO_COMPLY` (not pushed); the six JSDoc symbols import from `@purrtrait/jsdoc-renderer`, `CodeLinkComponent` stays on `@purrtrait/solid-code`, registry resolved on first attempt, `npm run ci` green 16/16 (details in the iteration 4 report).
 
 ### Decisions
 
