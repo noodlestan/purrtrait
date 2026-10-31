@@ -44,8 +44,8 @@
     "ci": "npm run lint && npm run build && npm run test:ci"
   },
   "dependencies": {
-    "@purrception/lang-ts": "0.1.0",
-    "@purrtrait/code-renderer": "*"
+    "@purrception/lang-ts": "0.1.1",
+    "@purrtrait/code-renderer": "0.0.11"
   },
   "peerDependencies": {},
   "devDependencies": {}
