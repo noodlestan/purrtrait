@@ -2,7 +2,7 @@
 
 **ID:** `astro-components`
 
-**Status:** `WORKING`
+**Status:** `DONE`
 
 **Template:** `$DOMAINS/plans/templates/plan.tart`
 
@@ -86,10 +86,10 @@ Executed from `$WORKSPACE/`. All work happens in `$PURRTRAIT` on branch `main`. 
 
 ## Items:
 
-| Iteration / Instructions                                                     | Status  |
-| ---------------------------------------------------------------------------- | ------- |
-| Iteration: Add Astro Code Block `./instructions/add-astro-code-block.md`     | `DONE`  |
-| Iteration: Add Astro Js Doc Block `./instructions/add-astro-js-doc-block.md` | `READY` |
+| Iteration / Instructions                                                     | Status |
+| ---------------------------------------------------------------------------- | ------ |
+| Iteration: Add Astro Code Block `./instructions/add-astro-code-block.md`     | `DONE` |
+| Iteration: Add Astro Js Doc Block `./instructions/add-astro-js-doc-block.md` | `DONE` |
 
 ### Iteration: Add Astro Code Block
 
@@ -137,7 +137,7 @@ build(astro-components): Add Astro components package with code block.
 
 **Id:** `add-astro-js-doc-block`
 
-**Status:** `READY`
+**Status:** `DONE`
 
 **Purpose:** Render descriptions, tags, and links in Astro with the shared core.
 
@@ -146,6 +146,8 @@ build(astro-components): Add Astro components package with code block.
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
 
 **Instructions:** `./instructions/add-astro-js-doc-block.md`
+
+**Report:** `./instructions/add-astro-js-doc-block__report.md`
 
 **Changes:**
 
@@ -162,9 +164,9 @@ build(astro-components): Add Astro components package with code block.
 
 #### Commits:
 
-| ID                       | Repository / Checkout / Branch    | Policy   | Hash  | Status     |
-| ------------------------ | --------------------------------- | -------- | ----- | ---------- |
-| `add-astro-js-doc-block` | Purrtrait / `$PURRTRAIT` / `main` | `NOPUSH` | (TBD) | `AUTHORED` |
+| ID                       | Repository / Checkout / Branch    | Policy   | Hash      | Status      |
+| ------------------------ | --------------------------------- | -------- | --------- | ----------- |
+| `add-astro-js-doc-block` | Purrtrait / `$PURRTRAIT` / `main` | `NOPUSH` | `45ae30a` | `COMMITTED` |
 
 ##### Commit: `add-astro-js-doc-block`
 
@@ -178,7 +180,7 @@ build(astro-components): Add js doc block component.
 
 ### Next
 
-Iteration `add-astro-code-block` is DONE (`029b465`, not pushed). Delegate iteration `add-astro-js-doc-block` — it consumes `@purrtrait/jsdoc-renderer`, which is published; run it in order on branch `main` with a `NOPUSH` commit.
+Both iterations are DONE (`029b465`, `45ae30a`, none pushed) and the plan is `DONE`. Remaining close-out: push decision; move this plan from `3-now` to `1-done`; sync the upstream milestone row (still `$PURRTRAIT/_backlog/6-plan/plan-astro-components/plan.md` at `PLANNING`).
 
 ### Blockers
 
@@ -235,6 +237,7 @@ npm run ci
 ### Evidence
 
 - **Astro code block shipped** — commit `029b465` on `main` (not pushed); `@purrtrait/astro-components` scaffolded with `serializeDeclaration`, `escapeHtml`, and build-time Shiki `CodeBlock.astro`; `npm run ci` green 7/7 with 100% coverage on the new package (details in the iteration 1 report).
+- **Astro JSDoc block shipped** — commit `45ae30a` on `main` (not pushed); `JsDocBlock.astro` + `Tags.astro` on `@purrtrait/jsdoc-renderer@0.0.2` (markdown descriptions via `marked`, empty-fragment gate); `npm run ci` green 7/7 (details in the iteration 2 report).
 
 ### Findings
 
