@@ -2,7 +2,7 @@
 
 **ID:** `astro-components`
 
-**Status:** `PLANNING`
+**Status:** `READY`
 
 **Template:** `$DOMAINS/plans/templates/plan.tart`
 
@@ -38,14 +38,17 @@ Provide the Astro-native rendering layer for the Purrtrait stack so static docs 
 
 ### Upstream Work
 
-| Kind        | Path                                                                   | Role                                                    |
-| ----------- | ---------------------------------------------------------------------- | ------------------------------------------------------- |
-| Milestone   | `$ARTIFICIALS/_roadmap/3-now/milestone-art-md-hello-word/milestone.md` | Phase 4 (Docs) coordinates this plan and its consumers. |
-| Parking Lot | `$PURRTRAIT/_backlog/_parking-lot.md`                                  | Purrtrait actionables and follow-ups.                   |
+| Kind      | Path                                                                   | Role                                                    |
+| --------- | ---------------------------------------------------------------------- | ------------------------------------------------------- |
+| Milestone | `$ARTIFICIALS/_roadmap/3-now/milestone-art-md-hello-word/milestone.md` | Phase 4 (Docs) coordinates this plan and its consumers. |
 
 ### Knowledge
 
 ::READ `$PURRTRAIT/_guide.md` (Guide) — Package layout, setup, and verification.
+::READ `$PURRTRAIT/node_modules/@noodlestan/conventions-typescript/art/index.md` (Conventions) — TypeScript conventions for the new package.
+::READ `$PURRTRAIT/node_modules/@noodlestan/conventions-unit-tests/art/index.md` (Conventions) — Unit test conventions for the `serializeDeclaration` tests.
+::READ `$WORKSPACE/checkouts/management/_ops/packages/policy.md` (Conventions) — Manifest pinning model: exact `dependencies`/`devDependencies`, caret `peerDependencies`; the same-repo `"*"` exception was dropped.
+::READ `$WORKSPACE/knowledge/conventions/writing-commit-message.art` (Conventions) — Commit message format for both iterations.
 ::READ `$CODE_RENDERER/src/controllers/serializer/createCodeSerializer.ts` (Source) — Serializer API consumed by `CodeBlock.astro`.
 ::READ `$NO_COMPLY/apps/standard-ui-demo/src/modules/code/components/CodeBlock/CodeBlock.tsx` (Reference) — The Solid component being mirrored.
 ::READ `$NO_COMPLY/apps/standard-ui-demo/src/modules/code/components/CodeDocDescription/CodeDocDescription.tsx` (Reference) — The description/tags/links block being mirrored.
@@ -83,22 +86,24 @@ Executed from `$WORKSPACE/`. All work happens in `$PURRTRAIT` on branch `main`. 
 
 ## Items:
 
-| Iteration / Instructions          | Status     |
-| --------------------------------- | ---------- |
-| Iteration: Add Astro Code Block   | `PLANNING` |
-| Iteration: Add Astro Js Doc Block | `PLANNING` |
+| Iteration / Instructions                                                     | Status  |
+| ---------------------------------------------------------------------------- | ------- |
+| Iteration: Add Astro Code Block `./instructions/add-astro-code-block.md`     | `READY` |
+| Iteration: Add Astro Js Doc Block `./instructions/add-astro-js-doc-block.md` | `READY` |
 
 ### Iteration: Add Astro Code Block
 
 **Id:** `add-astro-code-block`
 
-**Status:** `PLANNING`
+**Status:** `READY`
 
 **Purpose:** Ship the package scaffold and the build-time code renderer.
 
 **Description:** New `$PURRTRAIT/libs/astro-components` package with `CodeBlock.astro` serializing declaration nodes and highlighting with Shiki at build time.
 
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
+
+**Instructions:** `./instructions/add-astro-code-block.md`
 
 **Changes:**
 
@@ -130,13 +135,15 @@ build(astro-components): Add Astro components package with code block.
 
 **Id:** `add-astro-js-doc-block`
 
-**Status:** `PLANNING`
+**Status:** `READY`
 
 **Purpose:** Render descriptions, tags, and links in Astro with the shared core.
 
 **Description:** Add `JsDocBlock.astro` on top of `@purrtrait/jsdoc-renderer`, with markdown descriptions and injectable link resolution.
 
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
+
+**Instructions:** `./instructions/add-astro-js-doc-block.md`
 
 **Changes:**
 
@@ -149,7 +156,7 @@ build(astro-components): Add Astro components package with code block.
 
 **Dependencies:**
 
-- Iteration: Add JSDoc Renderer Package (Plan: Add JSDoc Renderer Package).
+- Iteration: Add JSDoc Renderer Package (Plan: Add JSDoc Renderer Package) — `DONE`; `@purrtrait/jsdoc-renderer@0.0.2` published on npm.
 
 #### Commits:
 
@@ -169,7 +176,7 @@ build(astro-components): Add js doc block component.
 
 ### Next
 
-Write instructions for Iteration: Add Astro Code Block (unblocked), then delegate. Iteration: Add Astro Js Doc Block waits for Plan: Add JSDoc Renderer Package.
+Both iterations are `READY` with self-contained instructions: `./instructions/add-astro-code-block.md` and `./instructions/add-astro-js-doc-block.md`. The former blocker is gone — Plan: Add JSDoc Renderer Package is `DONE` and `@purrtrait/jsdoc-renderer@0.0.2` is published — so iteration `add-astro-js-doc-block` no longer waits. Delegate the plan via the delegator; iterations run in order on branch `main` with `NOPUSH` commits.
 
 ### Blockers
 
@@ -227,6 +234,10 @@ npm run ci
 
 - None yet.
 
+### Findings
+
+- **Purrtrait parking lot missing** — `$PURRTRAIT/_guide.md` points to `_backlog/_parking-lot.md`, which does not exist; the Upstream Work reference was dropped until the file is created (also noted by Plan: Add JSDoc Renderer Package).
+
 ### Decisions
 
 - **Components package, not integration** — Astro "integrations" are config hooks; the `.astro` components are consumed directly by pages.
@@ -235,6 +246,12 @@ npm run ci
 - **Full docs surface owned here** — description, tags, links, and param/returns entries live in this package (or `jsdoc-renderer`); consumer apps render member descriptions from node data, never through local helpers.
 - **`resolveLink` injected as a prop** — keeps the package decoupled from any meta service; callers pass their own resolver.
 - **No token links in v1** — keeps Shiki output simple; `code-renderer`'s linker support stays available for a follow-up.
+- **`.astro` components exposed via the `exports` map, not the TS barrel** — `vite build` and `tsc --noEmit` cannot load `.astro` modules, so `src/index.ts` exports only the helper barrel and components resolve through `./components/*`. Refines the earlier "export all components from the package barrel" phrasing.
+- **Shiki dual theme** — `CodeBlock.astro` highlights with `{ themes: { light: 'github-light', dark: 'github-dark' }, defaultColor: false }` so consumers theme through CSS variables.
+
+### Knowledge to Update
+
+- None.
 
 ### Follow Ups
 
