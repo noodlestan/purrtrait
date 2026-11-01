@@ -1,0 +1,30 @@
+---
+import { codeToHtml } from 'shiki';
+
+import { escapeHtml, serializeDeclaration } from '../lib';
+
+type Props = {
+	lang: string;
+	nodes: object[];
+	context?: object;
+	size?: string;
+};
+
+const props = Astro.props;
+
+const code = serializeDeclaration(props.nodes, { context: props.context });
+
+let html: string;
+
+try {
+	html = await codeToHtml(code, {
+		lang: props.lang || 'ts',
+		themes: { light: 'github-light', dark: 'github-dark' },
+		defaultColor: false,
+	});
+} catch {
+	html = `<pre><code>${escapeHtml(code)}</code></pre>`;
+}
+---
+
+<div class="code-block" data-size={props.size} set:html={html}></div>

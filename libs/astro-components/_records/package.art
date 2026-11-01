@@ -1,0 +1,55 @@
+# Module
+
+## Package: Astro Components
+
+**Purpose:** Astro renderers for code and JSDoc blocks.
+
+**Description:** Build-time `.astro` components serializing declarations through `@purrtrait/code-renderer` and highlighting with Shiki.
+
+**Owner:** Project: Purrtrait
+
+**Namespace:** Namespace: Purrtrait
+
+**Author:** Noodlestan Collective
+
+**Path:** `libs/astro-components/`
+
+**Canonical Name:** `@purrtrait/astro-components`
+
+**Published:** `false`
+
+**Private:** `false`
+
+**Keywords:**
+
+- library
+- rendering
+- astro
+- documentation
+
+**Files:**
+
+- `src`
+- `README.md`
+- `LICENSE-MIT`
+- `CHANGELOG.md`
+
+**Language:** TypeScript
+
+**PackageFile:** `package.json`
+
+**Dependencies:**
+
+- Runtime:
+  - `@purrtrait/code-renderer` @ `0.0.11` — Code layout and serialization.
+  - `@purrtrait/lang-ts` @ `0.0.11` — TypeScript layout and language id.
+  - `marked` @ `18.1.2` — Markdown parsing.
+
+- Peer:
+  - `astro` @ `^7` — Component runtime.
+  - `shiki` @ `^4` — Build-time syntax highlighting.
+
+- Dev:
+  - `@purrception/lang-ts` @ `0.1.1` — Declaration and JSDoc node types (type-only).
+
+**License:** License: Noodlestan 2026 MIT
