@@ -1,6 +1,6 @@
 {
   "name": "@purrtrait/jsdoc-renderer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Purrtrait JSDoc rendering core.",
   "keywords": [
     "library",

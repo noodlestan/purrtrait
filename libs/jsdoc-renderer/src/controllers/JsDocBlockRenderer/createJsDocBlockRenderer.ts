@@ -58,6 +58,7 @@ export const createJsDocBlockRenderer = (
 			const [full, rawTarget] = match;
 			const index = match.index ?? 0;
 			parts.push(desc.slice(offset, index));
+			offset = index + full.length;
 
 			if (rawTarget) {
 				const resolved = linkResolver.resolveLink(rawTarget);
@@ -73,8 +74,6 @@ export const createJsDocBlockRenderer = (
 				}
 				parts.push(serialized);
 			}
-
-			offset = index + full.length;
 		}
 
 		parts.push(desc.slice(offset));

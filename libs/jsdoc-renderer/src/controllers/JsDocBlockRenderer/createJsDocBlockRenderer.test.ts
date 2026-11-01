@@ -33,9 +33,7 @@ describe('createJsDocBlockRenderer', () => {
 
 			const result = renderer.description({ description: 'See {@link missing} now.' });
 
-			// Ported verbatim from the source: the fallback branch `continue`s before the
-			// `offset` update, so the raw description is re-emitted after the fallback text.
-			expect(result).toBe('See missingSee {@link missing} now.');
+			expect(result).toBe('See missing now.');
 		});
 
 		it('WHEN serializeLink is provided it formats the resolved link with the override', () => {
@@ -53,9 +51,25 @@ describe('createJsDocBlockRenderer', () => {
 
 			const result = renderer.description({ description: 'See {@link path/to/Thing} now.' });
 
-			// Ported verbatim from the source: the plain-text branch `continue`s before the
-			// `offset` update, so the raw description is re-emitted after the display text.
-			expect(result).toBe('See ThingSee {@link path/to/Thing} now.');
+			expect(result).toBe('See Thing now.');
+		});
+
+		it('WHEN the description is absent it returns undefined', () => {
+			const renderer = createJsDocBlockRenderer();
+
+			const result = renderer.description({});
+
+			expect(result).toBeUndefined();
+		});
+
+		it('WHEN the description carries several inline links each renders once in order', () => {
+			const renderer = createJsDocBlockRenderer();
+
+			const result = renderer.description({
+				description: 'Use {@link path/to/Thing} with {@link other/Target} here.',
+			});
+
+			expect(result).toBe('Use [Thing](path/to/Thing) with [Target](other/Target) here.');
 		});
 	});
 
@@ -80,6 +94,14 @@ describe('createJsDocBlockRenderer', () => {
 	});
 
 	describe('links', () => {
+		it('WHEN the node carries no link tag it returns an empty list', () => {
+			const renderer = createJsDocBlockRenderer();
+
+			const result = renderer.links({ description: 'No link tags.' });
+
+			expect(result).toEqual([]);
+		});
+
 		it('WHEN the link tag is a string it extracts the resolved link item', () => {
 			const renderer = createJsDocBlockRenderer();
 			const node: JsDocData = { tags: { link: 'path/to/Thing' } };

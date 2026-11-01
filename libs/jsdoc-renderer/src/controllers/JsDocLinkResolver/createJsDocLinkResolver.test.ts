@@ -27,6 +27,22 @@ describe('createJsDocLinkResolver', () => {
 		expect(result).toEqual({ text: 'Component', href: 'path/to/Component' });
 	});
 
+	it('WHEN the raw link carries no separator the full text becomes the display name', () => {
+		const resolver = createJsDocLinkResolver();
+
+		const result = resolver.resolveLink('Thing');
+
+		expect(result).toEqual({ text: 'Thing', href: 'Thing' });
+	});
+
+	it('WHEN the injected resolveLinkName is provided it derives the display name', () => {
+		const resolver = createJsDocLinkResolver({ resolveLinkName: text => text.toUpperCase() });
+
+		const result = resolver.resolveLink('path/to/Thing');
+
+		expect(result).toEqual({ text: 'PATH/TO/THING', href: 'path/to/Thing' });
+	});
+
 	it('WHEN the injected resolveLink returns a tuple the tuple display name is used', () => {
 		const resolver = createJsDocLinkResolver({
 			resolveLink: () => ['Custom Name', '/custom'],
