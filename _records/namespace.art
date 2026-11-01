@@ -2,6 +2,10 @@
 
 ## Namespace: Purrtrait
 
+**Purpose:** Publish the Purrtrait rendering packages under a shared identity.
+
+**Description:** TSX rendering libraries (`client-tsx`, `code-renderer`, `lang-ts`, `solid-code`, `view-tsx`).
+
 **Canonical Name:** `@purrtrait`
 
 **Owner:** Project: Purrtrait
