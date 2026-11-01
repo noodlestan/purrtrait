@@ -2,7 +2,7 @@
 
 **ID:** `add-jsdoc-renderer-package`
 
-**Status:** `WORKING`
+**Status:** `DONE`
 
 **Template:** `$DOMAINS/plans/templates/plan.tart`
 
@@ -110,13 +110,13 @@ Executed from `$WORKSPACE/`. Iterations 1–3 and 5 happen in `$PURRTRAIT` on br
 
 ## Items:
 
-| Iteration / Instructions                                                                   | Status  |
-| ------------------------------------------------------------------------------------------ | ------- |
-| Iteration: Add JSDoc Renderer Package `./instructions/add-jsdoc-renderer-package.md`       | `DONE`  |
-| Iteration: Drop Solid Code JSDoc Exports `./instructions/drop-solid-code-jsdoc-exports.md` | `DONE`  |
-| Iteration: Release JSDoc Renderer 0.0.1 `./instructions/release-jsdoc-renderer.md`         | `DONE`  |
-| Iteration: Update No Comply Imports `./instructions/update-no-comply-imports.md`           | `DONE`  |
-| Iteration: Consolidate JSDoc Rendering `./instructions/consolidate-jsdoc-rendering.md`     | `READY` |
+| Iteration / Instructions                                                                   | Status |
+| ------------------------------------------------------------------------------------------ | ------ |
+| Iteration: Add JSDoc Renderer Package `./instructions/add-jsdoc-renderer-package.md`       | `DONE` |
+| Iteration: Drop Solid Code JSDoc Exports `./instructions/drop-solid-code-jsdoc-exports.md` | `DONE` |
+| Iteration: Release JSDoc Renderer 0.0.1 `./instructions/release-jsdoc-renderer.md`         | `DONE` |
+| Iteration: Update No Comply Imports `./instructions/update-no-comply-imports.md`           | `DONE` |
+| Iteration: Consolidate JSDoc Rendering `./instructions/consolidate-jsdoc-rendering.md`     | `DONE` |
 
 ### Iteration: Add JSDoc Renderer Package
 
@@ -306,7 +306,7 @@ refactor(standard-ui-demo): Import JSDoc core from `@purrtrait/jsdoc-renderer`.
 
 **Id:** `consolidate-jsdoc-rendering`
 
-**Status:** `READY`
+**Status:** `DONE`
 
 **Purpose:** Fix the pinned `description()` fallback bug, enforce sibling coverage thresholds, and ship `@purrtrait/jsdoc-renderer@0.0.2` through the same publish gate.
 
@@ -315,6 +315,8 @@ refactor(standard-ui-demo): Import JSDoc core from `@purrtrait/jsdoc-renderer`.
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
 
 **Instructions:** `./instructions/consolidate-jsdoc-rendering.md`
+
+**Report:** `./instructions/consolidate-jsdoc-rendering__report.md`
 
 **Changes:**
 
@@ -331,9 +333,9 @@ refactor(standard-ui-demo): Import JSDoc core from `@purrtrait/jsdoc-renderer`.
 
 #### Commits:
 
-| ID                           | Repository / Checkout / Branch    | Policy     | Hash  | Status     |
-| ---------------------------- | --------------------------------- | ---------- | ----- | ---------- |
-| `consolidate-jsdoc-renderer` | Purrtrait / `$PURRTRAIT` / `main` | `NOCOMMIT` | (TBD) | `AUTHORED` |
+| ID                           | Repository / Checkout / Branch    | Policy     | Hash      | Status      |
+| ---------------------------- | --------------------------------- | ---------- | --------- | ----------- |
+| `consolidate-jsdoc-renderer` | Purrtrait / `$PURRTRAIT` / `main` | `NOCOMMIT` | `cde8315` | `COMMITTED` |
 
 ##### Commit: `consolidate-jsdoc-renderer`
 
@@ -351,7 +353,7 @@ fix(jsdoc-renderer): Repair description fallback; enforce coverage; release 0.0.
 
 ### Next
 
-Iterations 1–4 are DONE (`79a6883`, `592a162`, `a71a4d4`, `913417c` in `$PURRTRAIT`; `878cd46` in `$NO_COMPLY` — none pushed). Delegate Iteration: Consolidate JSDoc Rendering next — it stops at the publish gate: the worker fixes the `description()` fallback bug, enforces coverage thresholds, stages the 0.0.2 release, and reports a blocker; the user publishes `@purrtrait/jsdoc-renderer@0.0.2`, then the delegator commits and continues. The plan returns to `DONE` only after that iteration lands; then reflect completion upstream and move to `1-done`.
+All five iterations are DONE (`79a6883`, `592a162`, `a71a4d4`, `913417c`, `cde8315` in `$PURRTRAIT`; `878cd46` in `$NO_COMPLY` — none pushed); `@purrtrait/jsdoc-renderer@0.0.1` and `0.0.2`, and `@purrtrait/solid-code@0.0.13`, are published. The plan is `DONE` again. Close-out remaining: push decision, reflect completion upstream — milestone Phase 4 row → `DONE` (plan owner's boss) — move this plan from `3-now` to `1-done`, and the two Follow Ups (parking lot, sibling releases). Next delegatable plan: Plan: Astro Components, whose iterations depend on this plan and are now unblocked.
 
 ### Blockers
 
@@ -410,6 +412,7 @@ npm run ci
 - **Solid JSDoc surface dropped** — commit `592a162` on `main` (not pushed); `libs/solid-code/src/controllers/` deleted (306 lines), `@purrtrait/solid-code` now exports only `CodeBlock`, `CodeLayoutRenderer`, `CodeLinkComponent`; whole-repo CI green (details in the iteration 2 report).
 - **Release gate cleared** — `@purrtrait/jsdoc-renderer@0.0.1` and `@purrtrait/solid-code@0.0.13` published by the user (confirmed, no registry check performed during the processing window); release commits `a71a4d4` and `913417c` on `main`, both not pushed (details in the iteration 3 report).
 - **No comply migrated** — commit `878cd46` on `main` in `$NO_COMPLY` (not pushed); the six JSDoc symbols import from `@purrtrait/jsdoc-renderer`, `CodeLinkComponent` stays on `@purrtrait/solid-code`, registry resolved on first attempt, `npm run ci` green 16/16 (details in the iteration 4 report).
+- **JSDoc rendering consolidated** — commit `cde8315` on `main` (not pushed; amended by the user to include README/record/changelog polish); `description()` fallback bug fixed, characterization pins removed, `vitest.config.ts` thresholds enforced (coverage 100/91.3/100/100 vs 90/70/90/90, 23/23 tests), `@purrtrait/jsdoc-renderer@0.0.2` published by the user (details in the iteration 5 report).
 
 ### Decisions
 
