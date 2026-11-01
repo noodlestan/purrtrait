@@ -1,0 +1,60 @@
+---
+import type { FunctionJsDocData, JsDocData } from '@purrception/lang-ts';
+import { createJsDocBlockRenderer, type JsDocLinkItem } from '@purrtrait/jsdoc-renderer';
+import { marked } from 'marked';
+
+import { escapeHtml } from '../lib';
+import Tags from './Tags.astro';
+
+type Props = {
+	jsdoc: JsDocData;
+	title?: string;
+	resolveLink?: (target: string) => JsDocLinkItem | undefined;
+};
+
+const props = Astro.props;
+
+const renderer = createJsDocBlockRenderer({
+	linkResolver: props.resolveLink ? { resolveLink: props.resolveLink } : undefined,
+});
+
+const description = renderer.description(props.jsdoc);
+const tags = renderer.tags(props.jsdoc);
+const links = renderer.links(props.jsdoc);
+
+const isFunctionJsDoc = 'paramTags' in props.jsdoc;
+const params = isFunctionJsDoc ? renderer.params(props.jsdoc as FunctionJsDocData) : [];
+const returns = isFunctionJsDoc ? renderer.returns(props.jsdoc as FunctionJsDocData) : undefined;
+
+const hasContent = Boolean(description || tags.length || links.length || params.length || returns);
+
+const descriptionHtml = description ? await marked.parse(description) : undefined;
+---
+
+{
+	hasContent && (
+		<>
+			{props.title && <h3 class="jsdoc-title">{escapeHtml(props.title)}</h3>}
+			{descriptionHtml && <div class="jsdoc-description" set:html={descriptionHtml} />}
+			{tags.length > 0 && <Tags entries={tags} />}
+			{links.length > 0 && (
+				<ul class="jsdoc-links">
+					{links.map(link => (
+						<li>
+							<a href={link.href}>{link.text}</a>
+						</li>
+					))}
+				</ul>
+			)}
+			{params.length > 0 && (
+				<ul class="jsdoc-params">
+					{params.map(([name, value]) => {
+						const valueText = Array.isArray(value) ? value.join(', ') : value;
+						return <li>{escapeHtml(`${name}: ${valueText}`)}</li>;
+					})}
+				</ul>
+			)}
+			{returns && <p class="jsdoc-returns">{escapeHtml(returns)}</p>}
+		</>
+	)
+}

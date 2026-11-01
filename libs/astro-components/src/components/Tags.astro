@@ -1,0 +1,24 @@
+---
+import type { TagItem } from '@purrtrait/jsdoc-renderer';
+
+import { escapeHtml } from '../lib';
+
+type Props = {
+	entries: TagItem[];
+};
+
+const props = Astro.props;
+
+const texts = props.entries.map(([tag, value]) => {
+	const valueText = Array.isArray(value) ? value.join(', ') : value;
+	return `${tag}: ${valueText}`;
+});
+---
+
+{
+	texts.length > 0 && (
+		<ul class="tags">
+			{texts.map(text => <li>{escapeHtml(text)}</li>)}
+		</ul>
+	)
+}
