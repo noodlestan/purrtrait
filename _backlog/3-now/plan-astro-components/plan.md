@@ -2,7 +2,7 @@
 
 **ID:** `astro-components`
 
-**Status:** `READY`
+**Status:** `WORKING`
 
 **Template:** `$DOMAINS/plans/templates/plan.tart`
 
@@ -88,14 +88,14 @@ Executed from `$WORKSPACE/`. All work happens in `$PURRTRAIT` on branch `main`. 
 
 | Iteration / Instructions                                                     | Status  |
 | ---------------------------------------------------------------------------- | ------- |
-| Iteration: Add Astro Code Block `./instructions/add-astro-code-block.md`     | `READY` |
+| Iteration: Add Astro Code Block `./instructions/add-astro-code-block.md`     | `DONE`  |
 | Iteration: Add Astro Js Doc Block `./instructions/add-astro-js-doc-block.md` | `READY` |
 
 ### Iteration: Add Astro Code Block
 
 **Id:** `add-astro-code-block`
 
-**Status:** `READY`
+**Status:** `DONE`
 
 **Purpose:** Ship the package scaffold and the build-time code renderer.
 
@@ -104,6 +104,8 @@ Executed from `$WORKSPACE/`. All work happens in `$PURRTRAIT` on branch `main`. 
 **Instructions Mode:** `INSTRUCTIONS_SELF_CONTAINED_FILE`
 
 **Instructions:** `./instructions/add-astro-code-block.md`
+
+**Report:** `./instructions/add-astro-code-block__report.md`
 
 **Changes:**
 
@@ -119,9 +121,9 @@ Executed from `$WORKSPACE/`. All work happens in `$PURRTRAIT` on branch `main`. 
 
 #### Commits:
 
-| ID                     | Repository / Checkout / Branch    | Policy   | Hash  | Status     |
-| ---------------------- | --------------------------------- | -------- | ----- | ---------- |
-| `add-astro-code-block` | Purrtrait / `$PURRTRAIT` / `main` | `NOPUSH` | (TBD) | `AUTHORED` |
+| ID                     | Repository / Checkout / Branch    | Policy   | Hash      | Status      |
+| ---------------------- | --------------------------------- | -------- | --------- | ----------- |
+| `add-astro-code-block` | Purrtrait / `$PURRTRAIT` / `main` | `NOPUSH` | `029b465` | `COMMITTED` |
 
 ##### Commit: `add-astro-code-block`
 
@@ -176,7 +178,7 @@ build(astro-components): Add js doc block component.
 
 ### Next
 
-Both iterations are `READY` with self-contained instructions: `./instructions/add-astro-code-block.md` and `./instructions/add-astro-js-doc-block.md`. The former blocker is gone — Plan: Add JSDoc Renderer Package is `DONE` and `@purrtrait/jsdoc-renderer@0.0.2` is published — so iteration `add-astro-js-doc-block` no longer waits. Delegate the plan via the delegator; iterations run in order on branch `main` with `NOPUSH` commits.
+Iteration `add-astro-code-block` is DONE (`029b465`, not pushed). Delegate iteration `add-astro-js-doc-block` — it consumes `@purrtrait/jsdoc-renderer`, which is published; run it in order on branch `main` with a `NOPUSH` commit.
 
 ### Blockers
 
@@ -232,7 +234,7 @@ npm run ci
 
 ### Evidence
 
-- None yet.
+- **Astro code block shipped** — commit `029b465` on `main` (not pushed); `@purrtrait/astro-components` scaffolded with `serializeDeclaration`, `escapeHtml`, and build-time Shiki `CodeBlock.astro`; `npm run ci` green 7/7 with 100% coverage on the new package (details in the iteration 1 report).
 
 ### Findings
 
