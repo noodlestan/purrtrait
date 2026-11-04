@@ -54,7 +54,7 @@ This section lists the documentation and reference files the sub-agent needs to 
 - ::READ `$PURRTRAIT/_guide.md` (Guide) — Repository layout, conventions, setup, and verification. Relevant for every step.
 - ::READ `$PURRTRAIT/node_modules/@noodlestan/conventions-typescript/art/index.md` (Conventions) — TypeScript conventions. Relevant for Steps 3 and 4.
 - ::READ `$PURRTRAIT/node_modules/@noodlestan/conventions-unit-tests/art/index.md` (Conventions) — Unit test conventions. Relevant for Step 3.
-- ::READ `$WORKSPACE/checkouts/management/_ops/packages/policy.md` (Conventions) — Manifest pinning model: every `dependency` and `devDependency` is an exact `x.y.z`; only `peerDependencies` use caret ranges. Relevant for Step 1.
+- ::READ `$WORKSPACE/checkouts/ops/knowledge/design/manifest-policy.md` (Conventions) — Manifest pinning model: every `dependency` and `devDependency` is an exact `x.y.z`; only `peerDependencies` use caret ranges. Relevant for Step 1.
 - ::READ `$WORKSPACE/knowledge/conventions/writing-commit-message.art` (Conventions) — Allowed commit types, scopes, and message format. Relevant for the commit step.
 - ::READ `$MODEL/package.json` (Model) — Manifest shape to mirror: raw-TS entry, scripts, exact policy pins. Relevant for Step 1.
 - ::READ `$MODEL/vite.config.ts`, `$MODEL/vitest.config.ts`, `$MODEL/tsconfig.json`, `$MODEL/tsconfig.vite.json`, `$MODEL/.npmignore`, `$MODEL/.prettierignore` (Model) — Build, test, and ignore configuration to copy. Relevant for Step 1.

@@ -47,7 +47,7 @@ Provide the Astro-native rendering layer for the Purrtrait stack so static docs 
 ::READ `$PURRTRAIT/_guide.md` (Guide) — Package layout, setup, and verification.
 ::READ `$PURRTRAIT/node_modules/@noodlestan/conventions-typescript/art/index.md` (Conventions) — TypeScript conventions for the new package.
 ::READ `$PURRTRAIT/node_modules/@noodlestan/conventions-unit-tests/art/index.md` (Conventions) — Unit test conventions for the `serializeDeclaration` tests.
-::READ `$WORKSPACE/checkouts/management/_ops/packages/policy.md` (Conventions) — Manifest pinning model: exact `dependencies`/`devDependencies`, caret `peerDependencies`; the same-repo `"*"` exception was dropped.
+::READ `$WORKSPACE/checkouts/ops/knowledge/design/manifest-policy.md` (Conventions) — Manifest pinning model: exact `dependencies`/`devDependencies`, caret `peerDependencies`; the same-repo `"*"` exception was dropped.
 ::READ `$WORKSPACE/knowledge/conventions/writing-commit-message.art` (Conventions) — Commit message format for both iterations.
 ::READ `$CODE_RENDERER/src/controllers/serializer/createCodeSerializer.ts` (Source) — Serializer API consumed by `CodeBlock.astro`.
 ::READ `$NO_COMPLY/apps/standard-ui-demo/src/modules/code/components/CodeBlock/CodeBlock.tsx` (Reference) — The Solid component being mirrored.
